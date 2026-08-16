@@ -40,8 +40,8 @@ export function ExploreCursor({
         transition={{ duration: 0.18 }}
       />
       <motion.span
-        id="ExploreButton"
-        data-ui="ExploreButton"
+        id="ExploreCursorButton"
+        data-ui="ExploreCursorButton"
         className="pointer-events-none absolute z-30 hidden -translate-x-1/2 -translate-y-1/2 items-center justify-center whitespace-nowrap rounded-[20px] bg-pill px-4 py-2 text-[0.8rem] leading-none text-white md:flex"
         style={{ left: buttonX, top: buttonY }}
         animate={{ opacity: active ? 1 : 0, scale: active ? 1 : 0.7 }}
