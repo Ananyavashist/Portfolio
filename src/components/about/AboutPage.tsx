@@ -89,7 +89,7 @@ function CountUp({ value, suffix }: { value: number; suffix: string }) {
   return (
     <p
       ref={ref}
-      className="font-display text-[clamp(2.4rem,5vw,4rem)] font-medium tracking-[-0.03em] text-[#000000]"
+      className="font-display text-h1 font-medium text-[#000000]"
     >
       {shown}
       {suffix}
@@ -109,7 +109,7 @@ function AboutStats() {
             className="rounded-[16px] bg-[#F7F7F7] px-1.5 py-3 text-center md:px-2 md:py-4"
           >
             <CountUp value={stat.value} suffix={stat.suffix} />
-            <p className="mt-1 text-[length:var(--body-size)] leading-snug text-muted">
+            <p className="mt-1 text-label leading-snug text-muted">
               {stat.label}
             </p>
           </div>
@@ -122,7 +122,7 @@ function AboutStats() {
           href={about.contactCta.href}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex h-12 items-center rounded-pill bg-pill px-6 text-[length:var(--body-size)] text-white transition-transform duration-300 hover:scale-[1.03]"
+          className="inline-flex h-12 items-center rounded-pill bg-pill px-6 text-body text-white transition-transform duration-300 hover:scale-[1.03]"
         >
           {about.contactCta.label}
         </a>
@@ -142,14 +142,14 @@ function AboutIntro() {
         <h1
           id="AboutHeadline"
           data-ui="AboutHeadline"
-          className="max-w-3xl font-display text-[clamp(1.7rem,3.4vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.035em] text-[#000000]"
+          className="max-w-3xl font-display text-h1 font-semibold text-[#000000]"
         >
           {about.headline}
         </h1>
         <div
           id="AboutBio"
           data-ui="AboutBio"
-          className="mt-8 flex max-w-2xl flex-col gap-5 text-[length:var(--body-size)] leading-[1.7] text-ink"
+          className="mt-8 flex max-w-2xl flex-col gap-5 text-body text-ink"
         >
           {about.paragraphs.map((paragraph) => (
             <p key={paragraph.slice(0, 24)}>{paragraph}</p>
@@ -170,7 +170,7 @@ function AboutInterests() {
       <h2
         id="AboutInterestsTitle"
         data-ui="AboutInterestsTitle"
-        className="max-w-md font-display text-[length:var(--heading-size)] font-semibold tracking-[-0.02em] text-[#000000]"
+        className="max-w-md font-display text-h2 font-semibold text-[#000000]"
       >
         {about.interestsTitle}
       </h2>
@@ -179,7 +179,7 @@ function AboutInterests() {
           <li
             key={item}
             data-ui="AboutInterestChip"
-            className="rounded-pill bg-[#F7F7F7] px-4 py-2 text-[length:var(--body-size)] text-ink"
+            className="rounded-pill bg-[#F7F7F7] px-4 py-2 text-label text-ink"
           >
             {item}
           </li>
@@ -195,7 +195,7 @@ function AboutValues() {
       <h2
         id="AboutValuesTitle"
         data-ui="AboutValuesTitle"
-        className="max-w-md font-display text-[length:var(--heading-size)] font-semibold tracking-[-0.02em] text-[#000000]"
+        className="max-w-md font-display text-h2 font-semibold text-[#000000]"
       >
         {about.valuesTitle}
       </h2>
@@ -207,10 +207,10 @@ function AboutValues() {
             data-ui={value.id}
             className="min-w-[220px] shrink-0 rounded-[20px] bg-[#F7F7F7] p-6 lg:min-w-0 lg:shrink"
           >
-            <h3 className="font-display text-[length:var(--heading-size)] font-semibold tracking-[-0.02em] text-[#000000]">
+            <h3 className="font-display text-h3 font-semibold text-[#000000]">
               {value.title}
             </h3>
-            <p className="mt-3 text-[length:var(--body-size)] leading-relaxed text-ink">
+            <p className="mt-3 text-body text-ink">
               {value.body}
             </p>
           </article>
@@ -254,7 +254,7 @@ function AboutBehindTheScenes() {
       <h2
         id="AboutBehindTitle"
         data-ui="AboutBehindTitle"
-        className="max-w-lg font-display text-[length:var(--heading-size)] font-semibold tracking-[-0.02em] text-[#000000]"
+        className="max-w-lg font-display text-h2 font-semibold text-[#000000]"
       >
         {about.behindTitle}
       </h2>
@@ -278,7 +278,7 @@ function AboutBooks() {
       <h2
         id="AboutBooksTitle"
         data-ui="AboutBooksTitle"
-        className="max-w-lg font-display text-[length:var(--heading-size)] font-semibold tracking-[-0.02em] text-[#000000]"
+        className="max-w-lg font-display text-h2 font-semibold text-[#000000]"
       >
         {about.booksTitle}
       </h2>

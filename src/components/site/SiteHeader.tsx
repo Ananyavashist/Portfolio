@@ -59,7 +59,7 @@ function NavLink({
       href={href}
       onMouseEnter={onEnter}
       aria-current={active ? "page" : undefined}
-      className={`relative z-10 px-3 py-2 text-[length:var(--heading-size)] tracking-[-0.01em] transition-colors duration-300 phone:px-3.5 ${
+      className={`relative z-10 px-3 py-2 text-label transition-colors duration-300 phone:px-3.5 ${
         highlighted ? "text-[#04111f]" : "text-[#5b5f63]"
       }`}
     >

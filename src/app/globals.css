@@ -4,17 +4,50 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  background: var(--color-canvas);
-  color: var(--color-ink);
-  max-width: 100%;
-}
+@layer base {
+  html,
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    max-width: 100%;
+  }
 
-body {
-  min-height: 100%;
-  overflow-x: hidden;
-  font-size: var(--body-size);
+  body {
+    min-height: 100%;
+    overflow-x: hidden;
+    font-size: var(--type-body);
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: var(--type-h1);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    font-size: var(--type-h2);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  h3 {
+    font-size: var(--type-h3);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  h4 {
+    font-size: var(--type-h4);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  h5 {
+    font-size: var(--type-h5);
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+  }
 }
 
 .home-layout > *,

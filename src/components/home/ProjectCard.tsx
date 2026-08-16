@@ -42,7 +42,7 @@ function ProjectTitle({ title }: { title: string }) {
   return (
     <p
       data-ui="ProjectTitle"
-      className="min-w-0 flex-1 text-[length:var(--body-size)] leading-snug tracking-[-0.01em] text-ink [overflow-wrap:anywhere]"
+      className="min-w-0 flex-1 text-h5 text-ink [overflow-wrap:anywhere]"
     >
       {title}
     </p>
@@ -53,7 +53,7 @@ function ProjectCompany({ company }: { company: string }) {
   return (
     <p
       data-ui="ProjectCompany"
-      className="shrink-0 text-[length:var(--body-size)] text-muted"
+      className="shrink-0 text-label text-muted"
     >
       {company}
     </p>

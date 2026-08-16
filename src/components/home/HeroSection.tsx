@@ -13,7 +13,7 @@ function HeroName() {
       id="HeroName"
       data-ui="HeroName"
       variants={fadeUp}
-      className="font-display text-[length:var(--hero-name)] font-semibold leading-[1.05] tracking-[-0.035em] text-[#000000]"
+      className="font-display text-h1 font-semibold text-[#000000]"
     >
       {site.name}
     </motion.h1>
@@ -26,7 +26,7 @@ function HeroBio() {
       id="HeroBio"
       data-ui="HeroBio"
       variants={fadeUp}
-      className="mt-4 max-w-[34rem] text-[length:var(--body-size)] leading-[1.55] text-muted [overflow-wrap:anywhere] md:mt-5"
+      className="mt-4 max-w-[34rem] text-body text-muted [overflow-wrap:anywhere] md:mt-5"
     >
       {site.description}
     </motion.p>
@@ -40,7 +40,7 @@ function HeroCtaPrimary() {
         id="HeroCtaPrimary"
         data-ui="HeroCtaPrimary"
         href={latestWorkHref}
-        className="inline-flex h-11 items-center rounded-pill bg-pill px-5 text-[length:var(--body-size)] text-white transition-transform duration-300 hover:scale-[1.03] phone:h-12 phone:px-6"
+        className="inline-flex h-11 items-center rounded-pill bg-pill px-5 text-body text-white transition-transform duration-300 hover:scale-[1.03] phone:h-12 phone:px-6"
       >
         My latest work
       </Link>
@@ -57,7 +57,7 @@ function HeroCtaSecondary() {
         href={site.resumeUrl}
         target="_blank"
         rel="noreferrer"
-        className="inline-flex h-11 items-center rounded-pill border border-[#F9F9F9] bg-[#F9F9F9] px-5 text-[length:var(--body-size)] text-ink transition-transform duration-300 hover:scale-[1.03] phone:h-12 phone:px-6"
+        className="inline-flex h-11 items-center rounded-pill border border-[#F9F9F9] bg-[#F9F9F9] px-5 text-body text-ink transition-transform duration-300 hover:scale-[1.03] phone:h-12 phone:px-6"
       >
         Resume
       </a>

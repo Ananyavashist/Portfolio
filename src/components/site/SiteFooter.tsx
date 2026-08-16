@@ -10,21 +10,21 @@ function FooterBrand() {
       <h3
         id="FooterName"
         data-ui="FooterName"
-        className="font-display text-[length:var(--heading-size)] font-semibold tracking-[-0.02em] text-ink"
+        className="font-display text-h3 font-semibold text-ink"
       >
         {site.name}
       </h3>
       <p
         id="FooterBio"
         data-ui="FooterBio"
-        className="mt-3 max-w-sm text-[length:var(--body-size)] leading-relaxed text-muted"
+        className="mt-3 max-w-sm text-body text-muted"
       >
         {site.description}
       </p>
       <p
         id="FooterCopyright"
         data-ui="FooterCopyright"
-        className="mt-8 text-[length:var(--body-size)] text-faint"
+        className="mt-8 text-label text-faint"
       >
         {site.copyright}
       </p>
@@ -35,7 +35,7 @@ function FooterBrand() {
 function FooterLinks() {
   return (
     <div id="FooterLinks" data-ui="FooterLinks">
-      <p className="mb-4 text-[length:var(--heading-size)] text-faint">Links</p>
+      <p className="mb-4 text-label text-faint">Links</p>
       <ul className="flex flex-col gap-2.5">
         {site.footerLinks.map((item) => (
           <li key={item.id}>
@@ -43,7 +43,7 @@ function FooterLinks() {
               id={item.id}
               data-ui={item.id}
               href={item.href}
-              className="text-[length:var(--body-size)] text-ink transition-colors duration-300 hover:text-muted"
+              className="text-body text-ink transition-colors duration-300 hover:text-muted"
             >
               {item.label}
             </Link>
@@ -73,14 +73,14 @@ function CopyEmailButton() {
       data-ui="FooterEmail"
       type="button"
       onClick={onCopy}
-      className="text-left text-[length:var(--body-size)] text-ink transition-colors duration-300 hover:text-muted"
+      className="text-left text-body text-ink transition-colors duration-300 hover:text-muted"
       aria-label="Button for copy email"
     >
       <span>{site.email}</span>
       <span
         id="FooterEmailCopiedState"
         data-ui="FooterEmailCopiedState"
-        className={`ml-2 text-[length:var(--body-size)] text-faint transition-opacity duration-300 ${
+        className={`ml-2 text-label text-faint transition-opacity duration-300 ${
           copied ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -93,7 +93,7 @@ function CopyEmailButton() {
 function FooterContact() {
   return (
     <div id="FooterContact" data-ui="FooterContact">
-      <p className="mb-4 text-[length:var(--heading-size)] text-faint">Contact</p>
+      <p className="mb-4 text-label text-faint">Contact</p>
       <div className="flex flex-col gap-2.5">
         <CopyEmailButton />
         <a
@@ -102,7 +102,7 @@ function FooterContact() {
           href={site.scheduleUrl}
           target="_blank"
           rel="noreferrer"
-          className="text-[length:var(--body-size)] text-ink transition-colors duration-300 hover:text-muted"
+          className="text-body text-ink transition-colors duration-300 hover:text-muted"
         >
           Schedule a call
         </a>

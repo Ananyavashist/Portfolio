@@ -1,0 +1,20 @@
+---
+description: System type scale and where each font size is used
+alwaysApply: true
+---
+
+# Type scale
+
+Use tokens from `src/styles/tokens.css`. Do not invent other font sizes.
+
+| Role | Size | Token | Use |
+|---|---|---|---|
+| Heading 1 | 30px | `--type-h1` / `text-h1` | Page titles (`HeroName`, `AboutHeadline`) |
+| Heading 2 | 26px | `--type-h2` / `text-h2` | Section titles |
+| Heading 3 | 24px | `--type-h3` / `text-h3` | Card and brand titles |
+| Heading 4 | 20px | `--type-h4` / `text-h4` | Smaller headings |
+| Heading 5 | 18px | `--type-h5` / `text-h5` | Project titles, supporting heads |
+| Body | 16px | `--type-body` / `text-body` | Paragraphs, buttons, links |
+| Label | 14px | `--type-label` / `text-label` | Navigation, chips, meta, captions |
+
+Nav (`NavGroup` / `NavLink`) always uses Label (`--type-label`).

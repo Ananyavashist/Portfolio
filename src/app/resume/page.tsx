@@ -7,18 +7,18 @@ export default function ResumePage() {
       data-ui="ResumePlaceholder"
       className="mx-auto w-full max-w-page px-[var(--page-pad)] py-16 md:py-24"
     >
-      <p className="text-[length:var(--body-size)] text-faint">Resume</p>
-      <h1 className="mt-3 font-display text-[length:var(--hero-name)] font-semibold tracking-[-0.035em] text-ink">
+      <p className="text-label text-faint">Resume</p>
+      <h1 className="mt-3 font-display text-h1 font-semibold text-ink">
         Resume
       </h1>
-      <p className="mt-4 max-w-xl text-[length:var(--body-size)] leading-relaxed text-muted">
+      <p className="mt-4 max-w-xl text-body text-muted">
         This page will be designed next. The PDF is already linked from the homepage.
       </p>
       <a
         href={site.resumeUrl}
         target="_blank"
         rel="noreferrer"
-        className="mt-8 inline-flex h-11 items-center rounded-pill bg-pill px-5 text-[length:var(--body-size)] text-white"
+        className="mt-8 inline-flex h-11 items-center rounded-pill bg-pill px-5 text-body text-white"
       >
         Open resume
       </a>
