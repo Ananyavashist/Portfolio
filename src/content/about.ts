@@ -1,5 +1,4 @@
 export const about = {
-  badge: "MS HCI/d Capstone Project 2026",
   headline: "Strategic Product Designer with experience spanning across travel, fintech, real estate, consumer, productivity, and enterprise CRMs",
   paragraphs: [
     "I started in computer science, studying AI and machine learning, and somewhere along the way I realized I was always more interested in the gap between what a system could do and what a person actually needed from it. That gap is where I ended up building my career.",
@@ -8,10 +7,12 @@ export const about = {
     "What ties all of it together is that I treat research as the foundation of every design decision I make. I understand the problem well enough to defend every choice. The technical background helps me build faster and collaborate better. The design practice is where I do my best thinking.",
     "Outside of work, I enjoy experimenting at the intersection of design, technology, and Generative AI. I build side projects like AI-powered photo booths, journaling jars, and personal library apps, and I code interactive UI prototypes using real data. I also mentor 30+ students as an ADPList Campus Leader and was the First Runner-Up at the Claude Hackathon 2026.",
   ],
-  portrait: {
-    src: "/images/about/portrait.png",
-    alt: "Ananya at a design showcase",
-  },
+  carousel: [
+    { src: "/images/about/portrait.png", alt: "Ananya at a design showcase" },
+    { src: "/images/about/bts-1.jpeg", alt: "Behind the scenes portrait" },
+    { src: "/images/about/bts-3.jpeg", alt: "Travel still" },
+    { src: "/images/about/book-8.jpg", alt: "A day out" },
+  ],
   stats: [
     { id: "AboutStatProjects", value: 20, suffix: "+", label: "Projects Delivered" },
     { id: "AboutStatIndustry", value: 6, suffix: "+", label: "Industry" },
@@ -60,16 +61,11 @@ export const about = {
   ],
   behindTitle: "Behind the scene meet the designer",
   behindTheScenes: [
-    { src: "/images/about/portrait.png", alt: "Capstone showcase" },
-    { src: "/images/about/bts-1.jpeg", alt: "Behind the scenes portrait" },
-    { src: "/images/about/bts-2.jpg", alt: "Quiet studio light" },
-    { src: "/images/about/bts-3.jpeg", alt: "Travel still" },
-    { src: "/images/about/bts-4.png", alt: "Studio moment" },
-    { src: "/images/about/bts-5.png", alt: "Candid frame" },
-    { src: "/images/about/book-8.jpg", alt: "A day out" },
-    { src: "/images/about/polaroid-1.jpeg", alt: "Working on a flow" },
-    { src: "/images/about/polaroid-6.jpeg", alt: "Polaroid six" },
-    { src: "/images/about/polaroid-4.jpeg", alt: "Polaroid four" },
+    {
+      id: "AboutBehindVideoWhyFit",
+      title: "Why I am the best fit",
+      youtubeId: "agD1teaTJM8",
+    },
   ],
   booksTitle: "Books I keep coming back to",
   books: [

@@ -59,7 +59,7 @@ function NavLink({
       href={href}
       onMouseEnter={onEnter}
       aria-current={active ? "page" : undefined}
-      className={`relative z-10 px-3 py-2 text-[0.75rem] tracking-[-0.01em] transition-colors duration-300 phone:px-3.5 phone:text-[0.8rem] ${
+      className={`relative z-10 px-3 py-2 text-[length:var(--heading-size)] tracking-[-0.01em] transition-colors duration-300 phone:px-3.5 ${
         highlighted ? "text-[#04111f]" : "text-[#5b5f63]"
       }`}
     >
@@ -114,7 +114,7 @@ export function SiteHeader() {
     <header
       id="SiteHeader"
       data-ui="SiteHeader"
-      className="relative z-30 mx-auto flex w-full max-w-page items-center justify-between px-[var(--page-pad)] pb-6 pt-5 md:pb-8 md:pt-7"
+      className="relative z-30 mx-auto flex w-full max-w-page items-center justify-between px-[var(--page-pad)] pb-0 pt-5 md:pt-7"
     >
       <SiteLogo />
       <NavGroup pathname={pathname} />

@@ -14,6 +14,7 @@ body {
 body {
   min-height: 100%;
   overflow-x: hidden;
+  font-size: var(--body-size);
 }
 
 .home-layout > *,
@@ -31,25 +32,26 @@ a {
 .home-layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(2.25rem, 5vw, 3.25rem);
+  gap: 40px;
 }
 
 .home-hero {
   grid-column: 1;
+  padding-top: 70px;
 }
 
 @media (min-width: 768px) {
   .home-layout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     column-gap: clamp(1.5rem, 3vw, 2.75rem);
-    row-gap: clamp(2.5rem, 4vw, 4rem);
+    row-gap: 40px;
     align-items: stretch;
   }
 
   .home-hero {
     grid-column: 1 / -1;
     grid-row: 1;
-    padding-top: 1.5rem;
+    padding-top: 70px;
   }
 
   [data-ui="ProjectCardAude"],
@@ -64,23 +66,23 @@ a {
 
 @media (min-width: 1024px) {
   .home-hero {
-    padding-top: 2.25rem;
+    padding-top: 70px;
   }
 }
 
 @media (min-width: 1280px) {
   .home-layout {
     column-gap: 3.25rem;
-    row-gap: 4.5rem;
+    row-gap: 40px;
   }
 
   .home-hero {
-    padding-top: 3rem;
+    padding-top: 70px;
   }
 }
 
 @media (min-width: 1440px) {
   .home-hero {
-    padding-top: 3.5rem;
+    padding-top: 70px;
   }
 }

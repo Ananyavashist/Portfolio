@@ -26,7 +26,7 @@ function HeroBio() {
       id="HeroBio"
       data-ui="HeroBio"
       variants={fadeUp}
-      className="mt-4 max-w-[34rem] text-[length:var(--hero-bio)] leading-[1.55] text-muted [overflow-wrap:anywhere] md:mt-5"
+      className="mt-4 max-w-[34rem] text-[length:var(--body-size)] leading-[1.55] text-muted [overflow-wrap:anywhere] md:mt-5"
     >
       {site.description}
     </motion.p>
@@ -40,7 +40,7 @@ function HeroCtaPrimary() {
         id="HeroCtaPrimary"
         data-ui="HeroCtaPrimary"
         href={latestWorkHref}
-        className="inline-flex h-11 items-center rounded-pill bg-pill px-5 text-[0.92rem] text-white transition-transform duration-300 hover:scale-[1.03] phone:h-12 phone:px-6"
+        className="inline-flex h-11 items-center rounded-pill bg-pill px-5 text-[length:var(--body-size)] text-white transition-transform duration-300 hover:scale-[1.03] phone:h-12 phone:px-6"
       >
         My latest work
       </Link>
@@ -57,7 +57,7 @@ function HeroCtaSecondary() {
         href={site.resumeUrl}
         target="_blank"
         rel="noreferrer"
-        className="inline-flex h-11 items-center rounded-pill border border-[#F9F9F9] bg-[#F9F9F9] px-5 text-[0.92rem] text-ink transition-transform duration-300 hover:scale-[1.03] phone:h-12 phone:px-6"
+        className="inline-flex h-11 items-center rounded-pill border border-[#F9F9F9] bg-[#F9F9F9] px-5 text-[length:var(--body-size)] text-ink transition-transform duration-300 hover:scale-[1.03] phone:h-12 phone:px-6"
       >
         Resume
       </a>
@@ -83,7 +83,7 @@ export function HeroSection() {
     <motion.section
       id="HeroSection"
       data-ui="HeroSection"
-      className="home-hero relative min-h-[280px] overflow-hidden pb-16 pt-4 md:min-h-[380px] md:pb-24 md:pt-8"
+      className="home-hero relative min-h-[280px] overflow-hidden pb-0 pt-[70px] md:min-h-[380px]"
       variants={stagger}
       initial="hidden"
       animate="visible"

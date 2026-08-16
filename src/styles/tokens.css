@@ -8,10 +8,12 @@
   --page-pad: clamp(1rem, 4.2vw, 4.5rem);
   --section-gap: clamp(2.5rem, 6vw, 5.5rem);
   --media-radius: clamp(14px, 1.4vw, 20px);
+  --body-size: 16px;
+  --heading-size: 20px;
   --hero-name: clamp(2.4rem, 5.2vw, 4.35rem);
-  --hero-bio: clamp(0.95rem, 1.15vw, 1.125rem);
-  --meta-size: clamp(0.82rem, 0.95vw, 0.95rem);
-  --nav-size: 0.92rem;
+  --hero-bio: 16px;
+  --meta-size: 16px;
+  --nav-size: 20px;
   --max-page: 1440px;
 }
 
