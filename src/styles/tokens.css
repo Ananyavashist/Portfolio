@@ -1,0 +1,20 @@
+:root {
+  --color-canvas: #ffffff;
+  --color-ink: #5c5c5c;
+  --color-muted: #9a9a9a;
+  --color-faint: #b8b8b8;
+  --color-pill: #2f2f2f;
+  --color-line: #d8d8d8;
+  --page-pad: clamp(1rem, 4.2vw, 4.5rem);
+  --section-gap: clamp(2.5rem, 6vw, 5.5rem);
+  --media-radius: clamp(14px, 1.4vw, 20px);
+  --hero-name: clamp(2.4rem, 5.2vw, 4.35rem);
+  --hero-bio: clamp(0.95rem, 1.15vw, 1.125rem);
+  --meta-size: clamp(0.82rem, 0.95vw, 0.95rem);
+  --nav-size: 0.92rem;
+  --max-page: 1440px;
+}
+
+[data-ui] {
+  /* Named hook for future edits — do not remove */
+}
