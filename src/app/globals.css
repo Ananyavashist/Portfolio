@@ -63,59 +63,11 @@ a {
 }
 
 .home-layout {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 30px;
 }
 
 .home-hero {
-  grid-column: 1;
   padding-top: 70px;
-}
-
-@media (min-width: 768px) {
-  .home-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    column-gap: clamp(1.5rem, 3vw, 2.75rem);
-    row-gap: 30px;
-    align-items: stretch;
-  }
-
-  .home-hero {
-    grid-column: 1 / -1;
-    grid-row: 1;
-    padding-top: 70px;
-  }
-
-  [data-ui="ProjectCardAude"],
-  [data-ui="ProjectCardMakeMyTrip"],
-  [data-ui="ProjectCardAccolade"],
-  [data-ui="ProjectCardGradientFI"] {
-    grid-column: auto;
-    grid-row: auto;
-    margin-top: 0;
-  }
-}
-
-@media (min-width: 1024px) {
-  .home-hero {
-    padding-top: 70px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .home-layout {
-    column-gap: 3.25rem;
-    row-gap: 30px;
-  }
-
-  .home-hero {
-    padding-top: 70px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .home-hero {
-    padding-top: 70px;
-  }
 }
