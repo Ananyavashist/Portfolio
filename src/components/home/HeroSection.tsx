@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { latestWorkHref } from "@/content/projects";
 import { site } from "@/content/site";
 import { fadeUp, stagger } from "@/lib/motion";
+import { HeroFluid } from "@/components/home/HeroFluid";
 
 function HeroName() {
   return (
@@ -82,14 +83,17 @@ export function HeroSection() {
     <motion.section
       id="HeroSection"
       data-ui="HeroSection"
-      className="home-hero max-w-xl pb-4 md:pb-8"
+      className="home-hero relative min-h-[280px] overflow-hidden pb-16 pt-4 md:min-h-[380px] md:pb-24 md:pt-8"
       variants={stagger}
       initial="hidden"
       animate="visible"
     >
-      <HeroName />
-      <HeroBio />
-      <HeroCtaGroup />
+      <HeroFluid />
+      <div className="relative z-10 max-w-xl">
+        <HeroName />
+        <HeroBio />
+        <HeroCtaGroup />
+      </div>
     </motion.section>
   );
 }
