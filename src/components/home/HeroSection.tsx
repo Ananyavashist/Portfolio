@@ -83,7 +83,7 @@ export function HeroSection() {
     <motion.section
       id="HeroSection"
       data-ui="HeroSection"
-      className="home-hero relative min-h-[280px] overflow-hidden pb-0 pt-[70px] md:min-h-[380px]"
+      className="home-hero relative overflow-hidden pb-0 pt-[70px]"
       variants={stagger}
       initial="hidden"
       animate="visible"

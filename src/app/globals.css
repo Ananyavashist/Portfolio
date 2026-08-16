@@ -65,7 +65,7 @@ a {
 .home-layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: 30px;
 }
 
 .home-hero {
@@ -77,7 +77,7 @@ a {
   .home-layout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     column-gap: clamp(1.5rem, 3vw, 2.75rem);
-    row-gap: 40px;
+    row-gap: 30px;
     align-items: stretch;
   }
 
@@ -106,7 +106,7 @@ a {
 @media (min-width: 1280px) {
   .home-layout {
     column-gap: 3.25rem;
-    row-gap: 40px;
+    row-gap: 30px;
   }
 
   .home-hero {
