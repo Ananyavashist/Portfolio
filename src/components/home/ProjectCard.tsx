@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import type { Project } from "@/content/projects";
 import { asset } from "@/lib/asset";
 import { fadeUp } from "@/lib/motion";
+import { ExploreCursor } from "@/components/home/ExploreCursor";
 
 function ProjectMedia({ project }: { project: Project }) {
   return (
@@ -65,19 +67,30 @@ export function ProjectCard({
   project: Project;
   index: number;
 }) {
+  const [hovering, setHovering] = useState(false);
+  const [cursor, setCursor] = useState({ x: 0, y: 0 });
+
   return (
     <motion.article
       id={project.id}
       data-ui={project.id}
-      data-offset={project.offset}
-      className="project-card group"
+      className="project-card group relative"
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       transition={{ delay: index * 0.05 }}
+      onMouseEnter={() => setHovering(true)}
+      onMouseLeave={() => setHovering(false)}
+      onMouseMove={(event) => {
+        const bounds = event.currentTarget.getBoundingClientRect();
+        setCursor({
+          x: event.clientX - bounds.left,
+          y: event.clientY - bounds.top,
+        });
+      }}
     >
-      <Link href={project.href} className="block">
+      <Link href={project.href} className="relative block md:cursor-none">
         <ProjectMedia project={project} />
         <div
           data-ui="ProjectMeta"
@@ -87,6 +100,7 @@ export function ProjectCard({
           <ProjectCompany company={project.company} />
         </div>
       </Link>
+      <ExploreCursor active={hovering} x={cursor.x} y={cursor.y} />
     </motion.article>
   );
 }

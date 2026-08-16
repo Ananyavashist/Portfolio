@@ -63,7 +63,7 @@ function NavGroup({ pathname }: { pathname: string }) {
     <nav
       id="NavGroup"
       data-ui="NavGroup"
-      className="flex items-center justify-center gap-3 phone:gap-7 md:absolute md:left-1/2 md:-translate-x-1/2 md:gap-9"
+      className="flex items-center justify-end gap-3 phone:gap-7 md:gap-9"
       aria-label="Primary"
     >
       {site.nav.map((item) => {
@@ -94,13 +94,10 @@ export function SiteHeader() {
     <header
       id="SiteHeader"
       data-ui="SiteHeader"
-      className="relative mx-auto flex w-full max-w-page flex-col items-center gap-y-3 px-[var(--page-pad)] pb-6 pt-5 md:flex-row md:justify-between md:pb-8 md:pt-7"
+      className="mx-auto flex w-full max-w-page items-center justify-between px-[var(--page-pad)] pb-6 pt-5 md:pb-8 md:pt-7"
     >
       <SiteLogo />
-      <div className="w-full md:w-auto">
-        <NavGroup pathname={pathname} />
-      </div>
-      <span className="hidden h-8 w-8 md:block phone:h-9 phone:w-9" aria-hidden />
+      <NavGroup pathname={pathname} />
     </header>
   );
 }

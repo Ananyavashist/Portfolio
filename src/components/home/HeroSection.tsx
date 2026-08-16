@@ -12,7 +12,7 @@ function HeroName() {
       id="HeroName"
       data-ui="HeroName"
       variants={fadeUp}
-      className="font-display text-[length:var(--hero-name)] font-semibold leading-[1.05] tracking-[-0.035em] text-ink"
+      className="font-display text-[length:var(--hero-name)] font-semibold leading-[1.05] tracking-[-0.035em] text-[#000000]"
     >
       {site.name}
     </motion.h1>
@@ -56,7 +56,7 @@ function HeroCtaSecondary() {
         href={site.resumeUrl}
         target="_blank"
         rel="noreferrer"
-        className="text-[0.95rem] text-muted transition-colors duration-300 hover:text-ink"
+        className="inline-flex h-11 items-center rounded-pill border border-[#F9F9F9] bg-[#F9F9F9] px-5 text-[0.92rem] text-ink transition-transform duration-300 hover:scale-[1.03] phone:h-12 phone:px-6"
       >
         Resume
       </a>

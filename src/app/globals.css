@@ -38,57 +38,33 @@ a {
   grid-column: 1;
 }
 
-[data-ui="ProjectCardAude"],
-[data-ui="ProjectCardMakeMyTrip"],
-[data-ui="ProjectCardAccolade"],
-[data-ui="ProjectCardGradientFI"] {
-  grid-column: 1;
-}
-
 @media (min-width: 768px) {
   .home-layout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     column-gap: clamp(1.5rem, 3vw, 2.75rem);
     row-gap: clamp(2.5rem, 4vw, 4rem);
-    align-items: start;
+    align-items: stretch;
   }
 
   .home-hero {
-    grid-column: 1;
+    grid-column: 1 / -1;
     grid-row: 1;
     padding-top: 1.5rem;
   }
 
-  [data-ui="ProjectCardAude"] {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  [data-ui="ProjectCardMakeMyTrip"] {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    margin-top: 7.5rem;
-  }
-
-  [data-ui="ProjectCardAccolade"] {
-    grid-column: 1;
-    grid-row: 3;
-  }
-
+  [data-ui="ProjectCardAude"],
+  [data-ui="ProjectCardMakeMyTrip"],
+  [data-ui="ProjectCardAccolade"],
   [data-ui="ProjectCardGradientFI"] {
-    grid-column: 2;
-    grid-row: 3;
-    margin-top: 1.5rem;
+    grid-column: auto;
+    grid-row: auto;
+    margin-top: 0;
   }
 }
 
 @media (min-width: 1024px) {
   .home-hero {
     padding-top: 2.25rem;
-  }
-
-  [data-ui="ProjectCardMakeMyTrip"] {
-    margin-top: 9.5rem;
   }
 }
 
@@ -101,18 +77,10 @@ a {
   .home-hero {
     padding-top: 3rem;
   }
-
-  [data-ui="ProjectCardMakeMyTrip"] {
-    margin-top: 11rem;
-  }
 }
 
 @media (min-width: 1440px) {
   .home-hero {
     padding-top: 3.5rem;
-  }
-
-  [data-ui="ProjectCardMakeMyTrip"] {
-    margin-top: 12rem;
   }
 }
