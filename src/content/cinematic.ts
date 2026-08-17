@@ -1,0 +1,161 @@
+export type HeroCard = {
+  id: string;
+  src: string;
+  alt: string;
+  /** Left edge as a percentage of the collage container width. */
+  x: number;
+  /** Top edge as a percentage of the collage container height. */
+  y: number;
+  /** Card width as a percentage of the collage container width. */
+  width: number;
+  /** Intrinsic aspect ratio, used to reserve height and avoid layout shift. */
+  ratio: number;
+  z: number;
+};
+
+export const cinematic = {
+  video: "/intro/intro.mp4",
+  caption: "Oh Hey! Welcome to my world of \u201cWhat if?\u201d and \u201cLet\u2019s try it\u201d",
+  pill: "Scroll see further",
+  sentence: {
+    left: "Hi! I am Ananya,",
+    right: "a Product Designer.",
+  },
+  hero: {
+    name: "Ananya",
+    year: "@2026",
+    role: "Product Designer",
+    location: "United States",
+    craft: "AI Builder",
+    craftNote: "Experimentation in progress",
+    menu: "menu",
+  },
+} as const;
+
+// Geometry recovered from storyboard-9.jpg by SIFT feature matching with a
+// RANSAC affine fit, re-expressed as percentages of the collage container
+// (the tight bounding box of all cards). The fits agreed on zero rotation for
+// every card: the tilt in the collage is baked into the source images. Stacking
+// order follows size, which reproduces the reference's overlaps.
+export const heroCards: HeroCard[] = [
+  {
+    id: "HeroCardAudePerformance",
+    src: "/intro/cards/aude-performance.png",
+    alt: "Aude performance feedback patterns",
+    x: 52.05,
+    y: 5.39,
+    width: 38.4,
+    ratio: 1024 / 681,
+    z: 1,
+  },
+  {
+    id: "HeroCardAudeCoaching",
+    src: "/intro/cards/aude-coaching.png",
+    alt: "Aude coaching session request",
+    x: 45.09,
+    y: 49.01,
+    width: 30.31,
+    ratio: 876 / 514,
+    z: 2,
+  },
+  {
+    id: "HeroCardDealMeridianLeads",
+    src: "/intro/cards/deal-meridian-leads.png",
+    alt: "Deal Meridian smart leads dashboard",
+    x: 1.84,
+    y: 6.94,
+    width: 28.31,
+    ratio: 820 / 642,
+    z: 3,
+  },
+  {
+    id: "HeroCardDealMeridianDashboard",
+    src: "/intro/cards/deal-meridian-dashboard.png",
+    alt: "Deal Meridian broker overview",
+    x: 71.76,
+    y: 36.85,
+    width: 28.24,
+    ratio: 819 / 620,
+    z: 4,
+  },
+  {
+    id: "HeroCardMaskingMirror",
+    src: "/intro/cards/masking-mirror.png",
+    alt: "Masking Mirror natural voice onboarding",
+    x: 0.0,
+    y: 47.09,
+    width: 27.99,
+    ratio: 811 / 528,
+    z: 5,
+  },
+  {
+    id: "HeroCardMakeMyTrip",
+    src: "/intro/cards/makemytrip.png",
+    alt: "MakeMyTrip booking confirmation",
+    x: 21.88,
+    y: 51.14,
+    width: 26.05,
+    ratio: 754 / 627,
+    z: 6,
+  },
+  {
+    id: "HeroCardCentryOs",
+    src: "/intro/cards/centry-os.png",
+    alt: "Centry OS merchant statement",
+    x: 31.71,
+    y: 16.95,
+    width: 23.4,
+    ratio: 679 / 613,
+    z: 7,
+  },
+  {
+    id: "HeroCardInsuranceDekho",
+    src: "/intro/cards/insurancedekho.png",
+    alt: "InsuranceDekho mobile app",
+    x: 33.95,
+    y: 0.0,
+    width: 15.47,
+    ratio: 449 / 585,
+    z: 8,
+  },
+  {
+    id: "HeroCardPortrait",
+    src: "/intro/cards/portrait.png",
+    alt: "Ananya at a research showcase",
+    x: 21.41,
+    y: 15.09,
+    width: 15.19,
+    ratio: 441 / 580,
+    z: 9,
+  },
+  {
+    id: "HeroCardRideMap",
+    src: "/intro/cards/ride-map.png",
+    alt: "Ride booking map",
+    x: 70.26,
+    y: 65.68,
+    width: 13.87,
+    ratio: 403 / 424,
+    z: 10,
+  },
+  {
+    id: "HeroCardWhiteboard",
+    src: "/intro/cards/whiteboard.png",
+    alt: "Research synthesis at the whiteboard",
+    x: 87.29,
+    y: 15.06,
+    width: 11.86,
+    ratio: 344 / 356,
+    z: 11,
+  },
+  {
+    id: "HeroCardIrctc",
+    src: "/intro/cards/irctc.png",
+    alt: "IRCTC account creation flow",
+    x: 45.89,
+    y: 2.37,
+    width: 4.55,
+    ratio: 259 / 447,
+    z: 12,
+  },
+];

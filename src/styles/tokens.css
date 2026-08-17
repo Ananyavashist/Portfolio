@@ -19,6 +19,13 @@
   --type-body: 16px;
   --type-label: 14px;
 
+  /* Cinematic hero palette */
+  --cinematic-black: #000000;
+  --cinematic-navy: #17246b;
+  --cinematic-frame: #3d63e0;
+  --cinematic-ink: #ffffff;
+  --cinematic-pill: #262626;
+
   --body-size: var(--type-body);
   --heading-size: var(--type-h4);
   --hero-name: var(--type-h1);

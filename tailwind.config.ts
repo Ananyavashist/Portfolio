@@ -23,6 +23,8 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-inter-display)", "sans-serif"],
         sans: ["var(--font-inter)", "sans-serif"],
+        handwritten: ["var(--font-indie-flower)", "cursive"],
+        hero: ["var(--font-balsamiq)", "var(--font-indie-flower)", "cursive"],
       },
       fontSize: {
         h1: ["var(--type-h1)", { lineHeight: "1.15", letterSpacing: "-0.03em" }],

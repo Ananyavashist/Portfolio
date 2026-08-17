@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { SiteFooter } from "@/components/site/SiteFooter";
-import { SiteHeader } from "@/components/site/SiteHeader";
-import { SmoothScroll } from "@/components/providers/SmoothScroll";
-import { site } from "@/content/site";
+import { Balsamiq_Sans, Indie_Flower, Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -19,9 +15,24 @@ const interDisplay = Inter({
   weight: ["500", "600", "700"],
 });
 
+const indieFlower = Indie_Flower({
+  subsets: ["latin"],
+  variable: "--font-indie-flower",
+  display: "swap",
+  weight: "400",
+});
+
+const balsamiqSans = Balsamiq_Sans({
+  subsets: ["latin"],
+  variable: "--font-balsamiq",
+  display: "swap",
+  weight: ["400", "700"],
+});
+
 export const metadata: Metadata = {
-  title: site.title,
-  description: site.description,
+  title: "Ananya — Product Designer",
+  description:
+    "Product designer working across enterprise SaaS and consumer products, currently experimenting with AI.",
 };
 
 export default function RootLayout({
@@ -31,14 +42,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${interDisplay.variable} font-sans antialiased`}>
-        <SmoothScroll>
-          <div id="SiteShell" data-ui="SiteShell" className="min-h-screen bg-canvas">
-            <SiteHeader />
-            {children}
-            <SiteFooter />
-          </div>
-        </SmoothScroll>
+      <body
+        className={`${inter.variable} ${interDisplay.variable} ${indieFlower.variable} ${balsamiqSans.variable} antialiased`}
+      >
+        {children}
       </body>
     </html>
   );

@@ -7,16 +7,31 @@
 @layer base {
   html,
   body {
-    background: var(--color-canvas);
-    color: var(--color-ink);
+    background: var(--cinematic-black);
+    color: var(--cinematic-ink);
     max-width: 100%;
+    overscroll-behavior-y: none;
+  }
+
+  /* Once the hero fills the viewport the overscroll gutter must not flash black.
+     The hero is now full-bleed navy, so the gutter matches the canvas. */
+  html[data-stage="hero"],
+  html[data-stage="hero"] body {
+    background: var(--cinematic-navy);
   }
 
   body {
     min-height: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
     font-size: var(--type-body);
     line-height: 1.6;
+  }
+
+  html.scroll-locked,
+  html.scroll-locked body {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
   }
 
   h1 {
