@@ -25,7 +25,7 @@ export default async function CaseStudyPlaceholder({
     >
       <p className="text-label text-faint">{project.company}</p>
       <h1 className="mt-3 max-w-3xl font-display text-h1 font-semibold text-ink">
-        {project.title}
+        {project.headline}
       </h1>
       <p className="mt-4 max-w-xl text-body text-muted">
         This case study will be designed next. The homepage card already routes here.

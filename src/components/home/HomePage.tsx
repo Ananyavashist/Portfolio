@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/home/HeroSection";
+import { projects } from "@/content/projects";
 import { ProjectGrid } from "@/components/home/ProjectGrid";
 
 export function HomePage() {
@@ -10,7 +11,7 @@ export function HomePage() {
     >
       <div className="home-layout">
         <HeroSection />
-        <ProjectGrid />
+        <ProjectGrid projects={projects} />
       </div>
     </main>
   );

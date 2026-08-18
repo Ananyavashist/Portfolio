@@ -5,8 +5,10 @@ import { motion, useReducedMotion } from "motion/react";
 import { heroCards } from "@/content/cinematic";
 import { asset } from "@/lib/asset";
 import { IntroVideo } from "@/components/cinematic/IntroVideo";
+import { AboutSection } from "@/components/cinematic/AboutSection";
 import { LiveHero } from "@/components/cinematic/LiveHero";
 import { ScrollCinematic } from "@/components/cinematic/ScrollCinematic";
+import { ProjectSection } from "@/components/home/ProjectSection";
 
 export function CinematicExperience() {
   const reducedMotion = useReducedMotion();
@@ -41,9 +43,12 @@ export function CinematicExperience() {
   }, [introCleared]);
 
   useEffect(() => {
-    const images = heroCards.map(({ src }) => {
+    const images = [
+      ...heroCards.map(({ src }) => asset(src)),
+      asset("/intro/hero-final-background.png"),
+    ].map((src) => {
       const image = new Image();
-      image.src = asset(src);
+      image.src = src;
       return image;
     });
     return () => {
@@ -60,12 +65,17 @@ export function CinematicExperience() {
       className="bg-[var(--cinematic-black)] font-handwritten"
     >
       {reducedMotion ? (
-        <div id="StaticHero" data-ui="StaticHero" className="h-[100svh] w-full">
-          <LiveHero interactive={introCleared} />
-        </div>
+        <>
+          <div id="StaticHero" data-ui="StaticHero" className="h-[100svh] w-full">
+            <LiveHero interactive={introCleared} />
+          </div>
+          <AboutSection />
+        </>
       ) : (
         <ScrollCinematic />
       )}
+
+      <ProjectSection />
 
       {introCleared ? null : (
         <motion.div

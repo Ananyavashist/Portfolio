@@ -14,7 +14,7 @@ export type HeroCard = {
 };
 
 export const cinematic = {
-  video: "/intro/intro.mp4",
+  video: "/intro/hey-video.mp4",
   caption: "Oh Hey! Welcome to my world of \u201cWhat if?\u201d and \u201cLet\u2019s try it\u201d",
   pill: "Scroll see further",
   sentence: {
@@ -28,7 +28,26 @@ export const cinematic = {
     location: "United States",
     craft: "AI Builder",
     craftNote: "Experimentation in progress",
-    menu: "menu",
+    design: "Design",
+    contentCreator: "Content Creator",
+    instagramUrl: "https://www.instagram.com/ananyadesign/",
+  },
+  about: {
+    intro:
+      "Ananya is a Product Designer and growing Design Technologist with 3+ years of experience crafting B2B enterprise products and B2C consumer experiences. She has spearheaded 0\u21921 design projects across early-stage seed startups and large-scale MNCs, with expertise in designing clarity within complex product ecosystems.",
+    companies: [
+      { label: "@MakeMyTrip", href: "https://www.makemytrip.global/?cc=am" },
+      { label: "@Aude.ai", href: "https://www.aude.ai/" },
+      { label: "@Accolade", href: "https://www.accoladehq.com/" },
+    ],
+    historySuffix:
+      "and more. Outside of her 9\u20135 and on weekends she spends her time tinkering with AI tools.",
+    stats: [
+      { value: "15+", label: "Products Shipped" },
+      { value: "80M", label: "User Impacted" },
+      { value: "8+", label: "Industries" },
+      { value: "70+", label: "Research Sessions" },
+    ],
   },
 } as const;
 
@@ -86,7 +105,7 @@ export const heroCards: HeroCard[] = [
     y: 47.09,
     width: 27.99,
     ratio: 811 / 528,
-    z: 5,
+    z: 6,
   },
   {
     id: "HeroCardMakeMyTrip",
@@ -96,7 +115,7 @@ export const heroCards: HeroCard[] = [
     y: 51.14,
     width: 26.05,
     ratio: 754 / 627,
-    z: 6,
+    z: 5,
   },
   {
     id: "HeroCardCentryOs",
@@ -116,7 +135,7 @@ export const heroCards: HeroCard[] = [
     y: 0.0,
     width: 15.47,
     ratio: 449 / 585,
-    z: 8,
+    z: 0,
   },
   {
     id: "HeroCardPortrait",
@@ -147,15 +166,5 @@ export const heroCards: HeroCard[] = [
     width: 11.86,
     ratio: 344 / 356,
     z: 11,
-  },
-  {
-    id: "HeroCardIrctc",
-    src: "/intro/cards/irctc.png",
-    alt: "IRCTC account creation flow",
-    x: 45.89,
-    y: 2.37,
-    width: 4.55,
-    ratio: 259 / 447,
-    z: 12,
   },
 ];

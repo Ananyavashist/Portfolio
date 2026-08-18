@@ -1,25 +1,55 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { motion, useReducedMotion, type Transition } from "motion/react";
 import type { Project } from "@/content/projects";
 import { asset } from "@/lib/asset";
-import { fadeUp } from "@/lib/motion";
-import { ExploreCursor } from "@/components/home/ExploreCursor";
+
+function ProjectMetadata({ tags }: { tags: string[] }) {
+  return (
+    <div
+      data-ui="ProjectMetadata"
+      className="mt-3 flex flex-wrap items-center gap-[10px] text-[14px] font-medium uppercase leading-[1.3] tracking-normal md:mt-3.5 lg:mt-4"
+    >
+      {tags.flatMap((tag, index) => {
+        const items = [
+          <span
+            key={tag}
+            className={
+              tag === "SHIPPED" ? "text-[#4e9652]" : "text-[#adadad]"
+            }
+          >
+            {tag}
+          </span>,
+        ];
+        if (index > 0) {
+          items.unshift(
+            <span key={`${tag}-sep`} className="text-[#adadad]" aria-hidden>
+              •
+            </span>,
+          );
+        }
+        return items;
+      })}
+    </div>
+  );
+}
 
 function ProjectMedia({ project }: { project: Project }) {
+  const media = project.media;
+
   return (
     <div
       id={`${project.id}Media`}
       data-ui="ProjectMedia"
-      className="relative overflow-hidden rounded-media bg-neutral-100"
+      data-project-media=""
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-media bg-neutral-100"
     >
-      {project.media.type === "video" ? (
+      {media.type === "video" ? (
         <video
-          className="aspect-[4/3] h-auto w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-          src={asset(project.media.src)}
-          poster={project.media.poster ? asset(project.media.poster) : undefined}
+          className="h-full w-full object-cover object-center"
+          src={asset(media.src)}
+          poster={media.poster ? asset(media.poster) : undefined}
           autoPlay
           muted
           loop
@@ -29,78 +59,60 @@ function ProjectMedia({ project }: { project: Project }) {
       ) : (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={asset(project.media.src)}
-          alt={project.title}
-          className="aspect-[4/3] h-auto w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          src={asset(media.src)}
+          alt=""
+          className="h-full w-full object-cover object-center transition-transform duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover/media:scale-[1.015]"
         />
       )}
     </div>
   );
 }
 
-function ProjectTitle({ title }: { title: string }) {
-  return (
-    <p
-      data-ui="ProjectTitle"
-      className="min-w-0 flex-1 text-h5 text-ink [overflow-wrap:anywhere]"
-    >
-      {title}
-    </p>
-  );
-}
+const cardTransition: Transition = {
+  layout: {
+    type: "spring",
+    stiffness: 280,
+    damping: 30,
+    mass: 0.7,
+  },
+  opacity: {
+    duration: 0.22,
+    ease: "easeOut",
+  },
+};
 
-function ProjectCompany({ company }: { company: string }) {
-  return (
-    <p
-      data-ui="ProjectCompany"
-      className="shrink-0 text-label text-muted"
-    >
-      {company}
-    </p>
-  );
-}
-
-export function ProjectCard({
-  project,
-  index,
-}: {
-  project: Project;
-  index: number;
-}) {
-  const [hovering, setHovering] = useState(false);
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
+export function ProjectCard({ project }: { project: Project }) {
+  const reducedMotion = useReducedMotion();
 
   return (
     <motion.article
       id={project.id}
       data-ui={project.id}
-      className="project-card group relative"
-      variants={fadeUp}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ delay: index * 0.05 }}
-      onMouseEnter={() => setHovering(true)}
-      onMouseLeave={() => setHovering(false)}
-      onMouseMove={(event) => {
-        const bounds = event.currentTarget.getBoundingClientRect();
-        setCursor({
-          x: event.clientX - bounds.left,
-          y: event.clientY - bounds.top,
-        });
-      }}
+      layout
+      initial={
+        reducedMotion ? false : { opacity: 0, y: 8, scale: 0.985 }
+      }
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={
+        reducedMotion ? { opacity: 0 } : { opacity: 0, y: 6, scale: 0.985 }
+      }
+      transition={cardTransition}
+      className="group/media min-w-0"
     >
-      <Link href={project.href} className="relative block md:cursor-none">
+      <Link
+        href={project.href}
+        aria-label={`View ${project.company} case study`}
+        className="block rounded-media focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 [@media(hover:hover)_and_(pointer:fine)]:cursor-none"
+      >
         <ProjectMedia project={project} />
-        <div
-          data-ui="ProjectMeta"
-          className="mt-3 flex flex-col items-start gap-1 phone:mt-3.5 phone:flex-row phone:justify-between phone:gap-4 md:mt-4"
+        <h3
+          data-ui="ProjectHeadline"
+          className="mt-3 text-[18px] font-semibold leading-[1.4] text-black [overflow-wrap:anywhere] lg:mt-4 lg:text-[21px] lg:leading-[1.35]"
         >
-          <ProjectTitle title={project.title} />
-          <ProjectCompany company={project.company} />
-        </div>
+          {project.headline}
+        </h3>
+        <ProjectMetadata tags={project.metadata} />
       </Link>
-      <ExploreCursor active={hovering} x={cursor.x} y={cursor.y} />
     </motion.article>
   );
 }

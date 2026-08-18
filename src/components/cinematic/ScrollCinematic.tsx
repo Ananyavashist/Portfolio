@@ -9,27 +9,53 @@ import {
   useTransform,
 } from "motion/react";
 import { cinematic } from "@/content/cinematic";
+import { AboutSection } from "@/components/cinematic/AboutSection";
 import { LiveHero } from "@/components/cinematic/LiveHero";
 
-// Shell size as a fraction of the stage. The middle stops are the widths
-// measured off storyboard frames 6, 7 and 8; k reaches exactly 1 at the end so
-// the shell equals the stage and the navy canvas meets all four viewport edges.
-const SHELL_AT = [0.1, 0.25, 0.45, 0.65, 0.9, 1];
-const SHELL_K = [0, 0.078, 0.139, 0.315, 0.8, 1];
+const HERO_REVEAL_END = 0.35;
+const ABOUT_OVERLAY_START = 0.4;
+
+// Approved resting shell fraction and fast reveal curve (heroRevealProgress 0 → 1).
+const START_K = 0.078;
+const SHELL_CURVE_AT = [0, 0.18, 0.42, 0.68, 0.86, 1];
+const SHELL_CURVE_K = [0, 0.2, 0.5, 0.76, 0.93, 1];
 
 export function ScrollCinematic() {
-  const trackRef = useRef<HTMLDivElement>(null);
+  const sequenceRef = useRef<HTMLDivElement>(null);
   const shellRef = useRef<HTMLDivElement>(null);
   const stageName = useRef("reveal");
   const [heroComplete, setHeroComplete] = useState(false);
+  const [aboutInteractive, setAboutInteractive] = useState(false);
+  const [metricsActive, setMetricsActive] = useState(false);
 
   const { scrollYProgress } = useScroll({
-    target: trackRef,
+    target: sequenceRef,
     offset: ["start start", "end end"],
   });
 
-  useMotionValueEvent(scrollYProgress, "change", (value) => {
-    setHeroComplete(value > 0.995);
+  const heroRevealProgress = useTransform(
+    scrollYProgress,
+    [0, HERO_REVEAL_END],
+    [0, 1],
+    { clamp: true },
+  );
+
+  const aboutOverlayProgress = useTransform(
+    scrollYProgress,
+    [ABOUT_OVERLAY_START, 1],
+    [0, 1],
+    { clamp: true },
+  );
+
+  const shellCurve = useTransform(
+    heroRevealProgress,
+    SHELL_CURVE_AT,
+    SHELL_CURVE_K,
+  );
+  const k = useTransform(shellCurve, [0, 1], [START_K, 1]);
+
+  useMotionValueEvent(heroRevealProgress, "change", (value) => {
+    setHeroComplete(value >= 0.995);
     const next = value > 0.9 ? "hero" : "reveal";
     if (next !== stageName.current) {
       stageName.current = next;
@@ -37,28 +63,32 @@ export function ScrollCinematic() {
     }
   });
 
-  const pillOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
-  const pillY = useTransform(scrollYProgress, [0, 0.09], [0, -160]);
+  useMotionValueEvent(aboutOverlayProgress, "change", (value) => {
+    setAboutInteractive(value > 0.02);
+    setMetricsActive(value >= 0.5);
+  });
 
-  // One value drives the whole transformation. Everything else is CSS calc off
-  // --k, so the shell is centred structurally by the grid anchor and never
-  // shifts off-centre.
-  const k = useTransform(scrollYProgress, SHELL_AT, SHELL_K);
+  const pillOpacity = useTransform(heroRevealProgress, [0, 0.05], [1, 0]);
+  const pillY = useTransform(heroRevealProgress, [0, 0.09], [0, -160]);
 
-  // Text separation: 0 keeps a single word space between the halves; 1 opens
-  // the full responsive gap once the reveal is under way.
-  const gapT = useTransform(scrollYProgress, [0.1, 0.25], [0, 1]);
+  const gapT = useTransform(heroRevealProgress, [0, 0.3], [0, 1]);
 
   const radiusPx = useTransform(
-    scrollYProgress,
+    heroRevealProgress,
     [0.1, 0.65, 0.9, 1],
     [6, 16, 18, 0],
   );
   const shellRadius = useMotionTemplate`${radiusPx}px`;
 
-  const sentenceOpacity = useTransform(scrollYProgress, [0.62, 0.8], [1, 0]);
+  const sentenceOpacity = useTransform(
+    heroRevealProgress,
+    [0.68, 0.92],
+    [1, 0],
+  );
 
-  // Dev-only: warn if the shell centre ever drifts from the viewport centre.
+  const aboutY = useTransform(aboutOverlayProgress, [0, 1], ["100%", "0%"]);
+  const aboutScale = useTransform(aboutOverlayProgress, [0, 1], [0.96, 1]);
+
   if (process.env.NODE_ENV !== "production") {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useMotionValueEvent(k, "change", () => {
@@ -76,93 +106,111 @@ export function ScrollCinematic() {
   }
 
   return (
-    <div
-      ref={trackRef}
-      id="ScrollCinematicTrack"
-      data-ui="ScrollCinematicTrack"
-      className="relative h-[320svh] md:h-[450svh]"
+    <section
+      ref={sequenceRef}
+      id="CinematicSequence"
+      data-ui="CinematicSequence"
+      className="relative h-[280svh] md:h-[300svh]"
     >
-      <motion.div
+      <div
         id="ScrollCinematicStage"
         data-ui="ScrollCinematicStage"
-        className="sticky top-0 h-[100svh] w-full overflow-x-clip overflow-y-hidden bg-[var(--cinematic-black)]"
-        style={
-          {
-            "--k": k,
-            "--gapT": gapT,
-          } as React.CSSProperties
-        }
+        className="sticky top-0 h-[100svh] w-full overflow-hidden bg-[var(--cinematic-black)]"
       >
         <motion.div
-          id="ScrollIndicator"
-          data-ui="ScrollIndicator"
-          className="pointer-events-none absolute inset-x-0 top-[5svh] z-40 flex justify-center"
-          style={{ opacity: pillOpacity, y: pillY }}
-        >
-          <span className="rounded-pill bg-[var(--cinematic-pill)] px-4 py-2 text-label text-white/70">
-            {cinematic.pill}
-          </span>
-        </motion.div>
-
-        <div
-          id="CinematicText"
-          data-ui="CinematicText"
-          className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center whitespace-nowrap text-[clamp(1.5rem,3.5vw,3rem)] leading-none text-white"
+          id="HeroLayer"
+          data-ui="HeroLayer"
+          className="absolute inset-0 z-10 overflow-x-clip overflow-y-hidden"
           style={
             {
-              // Half of the space that separates each text half from the shell:
-              // a word space at rest, opening to clamp(24px,2.5vw,48px).
-              "--gap":
-                "calc(0.14em + var(--gapT) * clamp(24px, 2.5vw, 48px))",
+              "--k": k,
+              "--gapT": gapT,
             } as React.CSSProperties
           }
         >
-          <motion.span
-            id="SentenceLeft"
-            data-ui="SentenceLeft"
-            className="absolute will-change-transform"
-            style={{
-              right: "calc(50% + 50% * var(--k) + var(--gap))",
-              opacity: sentenceOpacity,
-            }}
-          >
-            {cinematic.sentence.left}
-          </motion.span>
-          <motion.span
-            id="SentenceRight"
-            data-ui="SentenceRight"
-            className="absolute will-change-transform"
-            style={{
-              left: "calc(50% + 50% * var(--k) + var(--gap))",
-              opacity: sentenceOpacity,
-            }}
-          >
-            {cinematic.sentence.right}
-          </motion.span>
-        </div>
-
-        <div
-          id="CinematicCenterAnchor"
-          data-ui="CinematicCenterAnchor"
-          className="absolute inset-0 z-30 grid place-items-center"
-        >
           <motion.div
-            ref={shellRef}
-            id="HeroShell"
-            data-ui="HeroShell"
-            className="relative overflow-hidden"
-            style={{
-              width: "calc(100% * var(--k))",
-              height: "calc(100% * var(--k))",
-              borderRadius: shellRadius,
-            }}
+            id="ScrollIndicator"
+            data-ui="ScrollIndicator"
+            className="pointer-events-none absolute inset-x-0 top-[5svh] z-40 flex justify-center"
+            style={{ opacity: pillOpacity, y: pillY }}
           >
-            <div className="absolute inset-0">
-              <LiveHero interactive={heroComplete} />
-            </div>
+            <span className="rounded-pill bg-[var(--cinematic-pill)] px-4 py-2 text-label text-white/70">
+              {cinematic.pill}
+            </span>
           </motion.div>
-        </div>
-      </motion.div>
-    </div>
+
+          <div
+            id="CinematicText"
+            data-ui="CinematicText"
+            className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center whitespace-nowrap text-[36px] leading-none text-white"
+            style={
+              {
+                "--gap":
+                  "calc(0.14em + max(var(--gapT), min(var(--k) / 0.078, 1)) * clamp(24px, 2.5vw, 48px) + var(--k) * clamp(12px, 1.2vw, 32px))",
+              } as React.CSSProperties
+            }
+          >
+            <motion.span
+              id="SentenceLeft"
+              data-ui="SentenceLeft"
+              className="absolute will-change-transform"
+              style={{
+                right: "calc(50% + 50% * var(--k) + var(--gap))",
+                opacity: sentenceOpacity,
+              }}
+            >
+              {cinematic.sentence.left}
+            </motion.span>
+            <motion.span
+              id="SentenceRight"
+              data-ui="SentenceRight"
+              className="absolute will-change-transform"
+              style={{
+                left: "calc(50% + 50% * var(--k) + var(--gap))",
+                opacity: sentenceOpacity,
+              }}
+            >
+              {cinematic.sentence.right}
+            </motion.span>
+          </div>
+
+          <div
+            id="CinematicCenterAnchor"
+            data-ui="CinematicCenterAnchor"
+            className="absolute inset-0 z-30 grid place-items-center"
+          >
+            <motion.div
+              ref={shellRef}
+              id="HeroShell"
+              data-ui="HeroShell"
+              className="relative overflow-hidden"
+              style={{
+                width: "calc(100% * var(--k))",
+                height: "calc(100% * var(--k))",
+                borderRadius: shellRadius,
+                transformOrigin: "center center",
+              }}
+            >
+              <div className="absolute inset-0">
+                <LiveHero interactive={heroComplete} />
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        <motion.section
+          id="AboutOverlay"
+          data-ui="AboutOverlay"
+          className={`absolute inset-0 z-50 h-full w-full origin-bottom ${aboutInteractive ? "pointer-events-auto" : "pointer-events-none"}`}
+          style={{
+            y: aboutY,
+            scale: aboutScale,
+            transformOrigin: "bottom center",
+          }}
+        >
+          <AboutSection metricsActive={metricsActive} />
+        </motion.section>
+      </div>
+    </section>
   );
 }
