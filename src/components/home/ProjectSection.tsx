@@ -7,7 +7,6 @@ import {
   projects,
   type ProjectFilter,
 } from "@/content/projects";
-import { asset } from "@/lib/asset";
 import { ProjectGrid } from "@/components/home/ProjectGrid";
 
 export function ProjectSection() {
@@ -35,19 +34,7 @@ export function ProjectSection() {
       data-ui="ProjectSection"
       className="relative bg-white font-project text-black"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-[120px]"
-        style={{
-          backgroundImage: `url(${asset("/about/background-grid.jpg")})`,
-          backgroundRepeat: "repeat",
-          backgroundPosition: "top left",
-          backgroundSize: "auto",
-          maskImage: "linear-gradient(to bottom, black, transparent)",
-          WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
-        }}
-      />
-      <div className="relative mx-auto w-full max-w-[1400px] px-5 pb-24 pt-[150px] sm:px-8 md:pb-32 lg:px-10 lg:pb-36">
+      <div className="relative mx-auto w-full max-w-[1400px] px-5 pb-24 pt-20 sm:px-8 md:pb-32 md:pt-24 lg:px-10 lg:pb-36">
         <header className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between md:gap-10">
           <div className="max-w-[560px]">
             <h2 className="font-hero text-[30px] font-medium leading-[1.1] text-black md:text-[36px] lg:text-[40px]">

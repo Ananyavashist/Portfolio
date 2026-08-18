@@ -7,7 +7,7 @@ import { asset } from "@/lib/asset";
 import { IntroVideo } from "@/components/cinematic/IntroVideo";
 import { AboutSection } from "@/components/cinematic/AboutSection";
 import { LiveHero } from "@/components/cinematic/LiveHero";
-import { ScrollCinematic } from "@/components/cinematic/ScrollCinematic";
+import { ScrollStack } from "@/components/cinematic/ScrollStack";
 import { ProjectSection } from "@/components/home/ProjectSection";
 
 export function CinematicExperience() {
@@ -70,18 +70,17 @@ export function CinematicExperience() {
             <LiveHero interactive={introCleared} />
           </div>
           <AboutSection />
+          <ProjectSection />
         </>
       ) : (
-        <ScrollCinematic />
+        <ScrollStack />
       )}
-
-      <ProjectSection />
 
       {introCleared ? null : (
         <motion.div
           id="IntroOverlay"
           data-ui="IntroOverlay"
-          className="fixed inset-0 z-[100]"
+          className="fixed inset-0 z-[100] bg-[#000000]"
           initial={{ opacity: 1 }}
           animate={{ opacity: videoEnded ? 0 : 1 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}

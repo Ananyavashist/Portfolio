@@ -32,7 +32,7 @@ export function IntroVideo({ onFinish }: { onFinish: () => void }) {
     <div
       id="IntroVideo"
       data-ui="IntroVideo"
-      className="relative flex h-full w-full items-center justify-center overflow-hidden bg-[var(--cinematic-black)]"
+      className="relative flex h-full w-full items-center justify-center overflow-hidden bg-[#000000]"
     >
       <video
         ref={videoRef}

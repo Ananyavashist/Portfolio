@@ -59,7 +59,7 @@ export function MetricsRow({
   return (
     <dl
       ref={ref}
-      className="mt-[100px] grid w-full grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4"
+      className="mt-[60px] flex w-full flex-row flex-nowrap items-start justify-center gap-x-[120px]"
     >
       {stats.map((stat) => (
         <div
