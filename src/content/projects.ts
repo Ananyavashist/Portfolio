@@ -15,6 +15,8 @@ export type Project = {
   categories: ProjectCategory[];
   href: string;
   media: ProjectMedia;
+  /** Overrides the cursor chip text, which otherwise reads "View {company}". */
+  cursorLabel?: string;
 };
 
 export const projectFilters: { id: ProjectFilter; label: string }[] = [

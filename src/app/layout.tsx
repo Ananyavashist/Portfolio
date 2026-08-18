@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Balsamiq_Sans, Inter, Pangolin, Plus_Jakarta_Sans } from "next/font/google";
+import { SiteCursor } from "@/components/core/SiteCursor";
 import "./globals.css";
 
 const inter = Inter({
@@ -53,6 +54,7 @@ export default function RootLayout({
         className={`${inter.variable} ${interDisplay.variable} ${pangolin.variable} ${balsamiqSans.variable} ${plusJakarta.variable} antialiased`}
       >
         {children}
+        <SiteCursor />
       </body>
     </html>
   );

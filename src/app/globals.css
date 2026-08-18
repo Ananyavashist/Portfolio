@@ -34,6 +34,17 @@
     overscroll-behavior: none;
   }
 
+  /* The custom cursor adds this class itself, and only once it has a pointer
+     position, so the native cursor stays put if JS never runs. The universal
+     selector is needed to beat the UA stylesheet's `cursor: pointer` on links,
+     and !important to beat the inline cursor on the hero collage cards. */
+  @media (hover: hover) and (pointer: fine) {
+    html.site-cursor-active,
+    html.site-cursor-active * {
+      cursor: none !important;
+    }
+  }
+
   h1 {
     font-size: var(--type-h1);
     line-height: 1.15;
