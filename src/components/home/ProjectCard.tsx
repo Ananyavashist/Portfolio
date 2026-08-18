@@ -43,6 +43,8 @@ function ProjectMedia({ project }: { project: Project }) {
       id={`${project.id}Media`}
       data-ui="ProjectMedia"
       data-project-media=""
+      data-cursor="card"
+      data-cursor-label={project.cursorLabel ?? `View ${project.company}`}
       className="relative aspect-[4/3] w-full overflow-hidden rounded-media bg-neutral-100"
     >
       {media.type === "video" ? (
@@ -102,7 +104,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <Link
         href={project.href}
         aria-label={`View ${project.company} case study`}
-        className="block rounded-media focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 [@media(hover:hover)_and_(pointer:fine)]:cursor-none"
+        className="block rounded-media focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
       >
         <ProjectMedia project={project} />
         <h3
