@@ -23,8 +23,9 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-inter-display)", "sans-serif"],
         sans: ["var(--font-inter)", "sans-serif"],
-        handwritten: ["var(--font-indie-flower)", "cursive"],
-        hero: ["var(--font-balsamiq)", "var(--font-indie-flower)", "cursive"],
+        handwritten: ["var(--font-pangolin)", "cursive"],
+        hero: ["var(--font-balsamiq)", "var(--font-pangolin)", "cursive"],
+        project: ["var(--font-plus-jakarta)", "sans-serif"],
       },
       fontSize: {
         h1: ["var(--type-h1)", { lineHeight: "1.15", letterSpacing: "-0.03em" }],

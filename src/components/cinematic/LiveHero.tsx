@@ -5,81 +5,67 @@ import { cinematic, heroCards } from "@/content/cinematic";
 import { HeroCardLayer } from "@/components/cinematic/HeroCardLayer";
 import { asset } from "@/lib/asset";
 
-// Positions are percentages of the navy canvas, measured off the full-bleed
-// mockup (no blue frame). Sizes use cqw so type scales with the canvas as the
-// shell expands during the reveal.
-const META = "text-[clamp(9px,1.36cqw,20px)]";
-const LABEL = "text-[clamp(12px,1.78cqw,26px)]";
+function HeroHeader({ interactive }: { interactive: boolean }) {
+  const { hero } = cinematic;
 
-// Nudges each block up so the glyph ink, not the line box, lands on the mark.
-// Balsamiq Sans sits a little lower in its line box than Indie Flower did.
-const inkTop = (percent: number) => `calc(${percent}% - 0.28em)`;
-
-function HeroMeta() {
   return (
     <div
-      id="HeroMeta"
-      data-ui="HeroMeta"
-      className={`pointer-events-none absolute inset-0 z-50 leading-[1.25] text-white ${META}`}
+      id="HeroHeader"
+      data-ui="HeroHeader"
+      className="pointer-events-none absolute z-50 flex justify-between leading-[1.25] text-white [&>*]:shrink-0"
+      style={{
+        left: "8%",
+        right: "8%",
+        top: "8.5%",
+        fontSize: "calc(26px * var(--k, 1))",
+      }}
     >
-      <p
-        id="HeroMetaName"
-        data-ui="HeroMetaName"
-        className="absolute"
-        style={{ left: "8.50%", top: inkTop(9.15) }}
-      >
-        {cinematic.hero.name}
+      <p id="HeroMetaName" data-ui="HeroMetaName">
+        {hero.name}
         <br />
-        {cinematic.hero.year}
+        {hero.year}
       </p>
-      <p
-        id="HeroMetaRole"
-        data-ui="HeroMetaRole"
-        className="absolute"
-        style={{ left: "32.32%", top: inkTop(9.15) }}
-      >
-        {cinematic.hero.role}
+      <p id="HeroMetaRole" data-ui="HeroMetaRole">
+        {hero.role}
         <br />
-        {cinematic.hero.location}
+        {hero.location}
       </p>
-      <p
-        id="HeroMetaCraft"
-        data-ui="HeroMetaCraft"
-        className="absolute"
-        style={{ left: "59.67%", top: inkTop(9.15) }}
-      >
-        {cinematic.hero.craft}
+      <p id="HeroMetaCraft" data-ui="HeroMetaCraft">
+        {hero.craft}
         <br />
-        {cinematic.hero.craftNote}
+        <span className="whitespace-nowrap">{hero.craftNote}</span>
       </p>
+      <a
+        id="HeroDesignLink"
+        data-ui="HeroDesignLink"
+        href={hero.instagramUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        tabIndex={interactive ? 0 : -1}
+        aria-label={`${hero.design} ${hero.contentCreator} on Instagram`}
+        className={`text-white no-underline hover:underline focus:outline-none focus-visible:underline ${interactive ? "pointer-events-auto underline-offset-2" : "pointer-events-none"}`}
+      >
+        {hero.design}
+        <br />
+        <span className="whitespace-nowrap">{hero.contentCreator}</span>
+      </a>
     </div>
   );
 }
 
-function HeroMenu() {
+function HeroBackground() {
   return (
-    <div
-      id="HeroMenu"
-      data-ui="HeroMenu"
-      className={`pointer-events-none absolute z-50 flex items-center justify-center text-white ${LABEL}`}
-      style={{
-        left: "91.31%",
-        top: "11.78%",
-        width: "8.4%",
-        aspectRatio: "258 / 172",
-        transform: "translate(-50%, -50%)",
-      }}
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={asset("/intro/menu-circle.png")}
-        alt=""
-        aria-hidden
-        draggable={false}
-        className="pointer-events-none absolute inset-0 h-full w-full object-contain"
-      />
-      <span className="relative leading-none">{cinematic.hero.menu}</span>
-    </div>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      id="HeroBackground"
+      data-ui="HeroBackground"
+      src={asset("/intro/hero-final-background.png")}
+      alt=""
+      aria-hidden
+      draggable={false}
+      className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-center"
+      style={{ opacity: 0.35 }}
+    />
   );
 }
 
@@ -99,19 +85,12 @@ export function LiveHero({ interactive }: { interactive: boolean }) {
         className="relative h-full w-full overflow-hidden bg-[var(--cinematic-navy)]"
         style={{ containerType: "size" }}
       >
+        <HeroBackground />
         <div
           id="HeroCollage"
           data-ui="HeroCollage"
-          className="absolute left-1/2 top-[55.85%]"
+          className="absolute left-1/2 top-[55.85%] z-10"
           style={{
-            // Soft 1232px floor and proportional 84.96cqw target, capped at
-            // 1500px, then clamped by the horizontal (90cqw) and vertical
-            // (64.9cqh of canvas, converted through the 2.2656 aspect) safe
-            // areas so no card can touch an edge or the header zone.
-            //
-            // The absolute-px terms are multiplied by --k (1 outside the scroll
-            // reveal) so the collage stays a true proportional miniature while
-            // the shell is small, and lands on the px bounds at full size.
             width:
               "min(calc(1500px * var(--k, 1)), max(calc(1232px * var(--k, 1)), 84.96cqw), 90cqw, calc(64.9cqh * 2.2656))",
             aspectRatio: "2.2656",
@@ -129,8 +108,7 @@ export function LiveHero({ interactive }: { interactive: boolean }) {
             />
           ))}
         </div>
-        <HeroMeta />
-        <HeroMenu />
+        <HeroHeader interactive={interactive} />
       </div>
     </section>
   );

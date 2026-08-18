@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "iconsax-reactjs": "^0.0.8",
     "lenis": "^1.3.26",
     "motion": "^13.1.0",
     "next": "^15.5.23",

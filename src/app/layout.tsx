@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Balsamiq_Sans, Indie_Flower, Inter } from "next/font/google";
+import { Balsamiq_Sans, Inter, Pangolin, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,11 +15,18 @@ const interDisplay = Inter({
   weight: ["500", "600", "700"],
 });
 
-const indieFlower = Indie_Flower({
+const pangolin = Pangolin({
   subsets: ["latin"],
-  variable: "--font-indie-flower",
+  variable: "--font-pangolin",
   display: "swap",
   weight: "400",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 const balsamiqSans = Balsamiq_Sans({
@@ -43,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${interDisplay.variable} ${indieFlower.variable} ${balsamiqSans.variable} antialiased`}
+        className={`${inter.variable} ${interDisplay.variable} ${pangolin.variable} ${balsamiqSans.variable} ${plusJakarta.variable} antialiased`}
       >
         {children}
       </body>
