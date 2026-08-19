@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cinematic, heroCards } from "@/content/cinematic";
 import { HeroCardLayer } from "@/components/cinematic/HeroCardLayer";
 import { asset } from "@/lib/asset";
@@ -64,13 +64,25 @@ function HeroBackground() {
       aria-hidden
       draggable={false}
       className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-center"
-      style={{ opacity: 0.35 }}
+      style={{ opacity: 0.2 }}
     />
   );
 }
 
 export function LiveHero({ interactive }: { interactive: boolean }) {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const canvasRef = useRef<HTMLDivElement>(null);
+  const [canDrag, setCanDrag] = useState(false);
+
+  // A draggable element gets `touch-action: none`, which would swallow the
+  // vertical swipe this pinned hero depends on. Dragging is for mice only.
+  useEffect(() => {
+    const media = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const update = () => setCanDrag(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
 
   return (
     <section
@@ -81,6 +93,7 @@ export function LiveHero({ interactive }: { interactive: boolean }) {
       <div
         id="HeroCanvas"
         data-ui="HeroCanvas"
+        ref={canvasRef}
         onClick={() => interactive && setActiveId(null)}
         className="relative h-full w-full overflow-hidden bg-[var(--cinematic-navy)]"
         style={{ containerType: "size" }}
@@ -103,6 +116,8 @@ export function LiveHero({ interactive }: { interactive: boolean }) {
               key={card.id}
               card={card}
               interactive={interactive}
+              draggable={interactive && canDrag}
+              constraintsRef={canvasRef}
               active={activeId === card.id}
               onActivate={setActiveId}
             />

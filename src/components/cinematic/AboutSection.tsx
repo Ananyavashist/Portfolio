@@ -4,6 +4,7 @@ import type { MotionValue } from "motion/react";
 import { cinematic } from "@/content/cinematic";
 import { MetricsRow } from "@/components/cinematic/AnimatedMetric";
 import { CompanyLogoRail } from "@/components/cinematic/CompanyLogoRail";
+import { GridBackdrop } from "@/components/core/GridBackdrop";
 
 const linkClass =
   "text-black underline decoration-black underline-offset-2 hover:decoration-black/80";
@@ -23,6 +24,7 @@ export function AboutSection({
       data-ui="AboutSection"
       className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white px-6 py-12 font-hero text-black md:px-10"
     >
+      <GridBackdrop />
       <CompanyLogoRail overlayProgress={overlayProgress} />
       <div className="relative z-10 mx-auto flex w-full max-w-[1300px] flex-col items-center">
         <div className="flex w-full max-w-[1000px] flex-col items-center text-center">

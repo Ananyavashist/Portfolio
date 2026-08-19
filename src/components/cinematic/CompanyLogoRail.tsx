@@ -14,6 +14,12 @@ type Logo = (typeof cinematic.about.logos)[number];
 const ENTER_START = 0.4;
 const ENTER_END = 0.65;
 
+// Every logo shares one footprint so the two rails read as a single set. The
+// `y` percentages in the content file put the top row level with the first
+// line of the about copy.
+const LOGO_SIZE = 70;
+const LOGO_RADIUS = 6;
+
 function clampProgress(value: number, start: number, end: number) {
   if (value <= start) return 0;
   if (value >= end) return 1;
@@ -30,7 +36,6 @@ function LogoMark({
   index: number;
 }) {
   const slideDistance = logo.side === "left" ? -96 : 96;
-  const size = logo.size ?? 72;
   const stagger = index * 0.04;
 
   const opacity = useTransform(progress, (value) => {
@@ -59,8 +64,8 @@ function LogoMark({
         scale,
         opacity,
         rotate: logo.rotate,
-        width: size,
-        height: size,
+        width: LOGO_SIZE,
+        height: LOGO_SIZE,
       }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -68,6 +73,7 @@ function LogoMark({
         src={asset(logo.src)}
         alt=""
         className="h-full w-full object-contain"
+        style={{ borderRadius: LOGO_RADIUS }}
       />
     </motion.span>
   );
