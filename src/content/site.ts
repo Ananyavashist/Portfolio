@@ -33,6 +33,21 @@ export const site = {
       label: "Instagram",
       href: "https://www.instagram.com/ananyadesign/",
     },
+    {
+      id: "FooterGithub",
+      label: "Github",
+      href: "https://github.com/Ananyavashist",
+    },
+    {
+      id: "FooterTwitter",
+      label: "Twitter",
+      href: "https://x.com/Ananya_uni",
+    },
+    {
+      id: "FooterSubstack",
+      label: "Substack",
+      href: "https://substack.com/@ananya710782",
+    },
   ],
 } as const;
 

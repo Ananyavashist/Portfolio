@@ -18,7 +18,7 @@ function AnimatedMetric({
 }) {
   const { amount, suffix } = parseStat(value);
   const reducedMotion = useReducedMotion();
-  const [display, setDisplay] = useState(reducedMotion ? amount : 0);
+  const [display, setDisplay] = useState(0);
 
   useEffect(() => {
     if (reducedMotion) {
@@ -69,7 +69,7 @@ export function MetricsRow({
           <dt className="text-[clamp(1.75rem,3.5vw,2.25rem)] font-bold leading-none">
             <AnimatedMetric value={stat.value} active={playing} />
           </dt>
-          <dd className="mt-2 text-[clamp(0.875rem,1.5vw,1rem)] leading-snug">
+          <dd className="mt-2 text-[clamp(0.875rem,1.5vw,1rem)] font-bold leading-snug">
             {stat.label}
           </dd>
         </div>

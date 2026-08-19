@@ -1,174 +1,136 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
+import { ExportSquare } from "iconsax-reactjs";
 import { site } from "@/content/site";
+import {
+  footerLocation,
+  footerNavigation,
+  footerSocialLinks,
+  footerStatement,
+  type FooterDestination,
+} from "@/content/footer";
+import { FooterImageTicker } from "@/components/site/FooterImageTicker";
 
-function FooterBrand() {
-  return (
-    <div id="FooterBrand" data-ui="FooterBrand" className="max-w-md">
-      <h3
-        id="FooterName"
-        data-ui="FooterName"
-        className="font-display text-h3 font-semibold text-ink"
-      >
-        {site.name}
-      </h3>
-      <p
-        id="FooterBio"
-        data-ui="FooterBio"
-        className="mt-3 max-w-sm text-body text-muted"
-      >
-        {site.description}
-      </p>
-      <p
-        id="FooterCopyright"
-        data-ui="FooterCopyright"
-        className="mt-8 text-label text-faint"
-      >
-        {site.copyright}
-      </p>
-    </div>
-  );
+const headingClass =
+  "mb-5 text-label font-medium uppercase tracking-[0.01em] text-white";
+
+const itemClass =
+  "block text-body font-medium text-white/92 transition-[opacity,transform] duration-200 ease-out hover:translate-x-[2px] hover:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#27328A]";
+
+function FooterHeading({ children }: { children: string }) {
+  return <p className={headingClass}>{children}</p>;
 }
 
-function FooterLinks() {
-  return (
-    <div id="FooterLinks" data-ui="FooterLinks">
-      <p className="mb-4 text-label text-faint">Links</p>
-      <ul className="flex flex-col gap-2.5">
-        {site.footerLinks.map((item) => (
-          <li key={item.id}>
-            <Link
-              id={item.id}
-              data-ui={item.id}
-              href={item.href}
-              className="text-body text-ink transition-colors duration-300 hover:text-muted"
-            >
-              {item.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function CopyEmailButton() {
-  const [copied, setCopied] = useState(false);
-
-  async function onCopy() {
-    try {
-      await navigator.clipboard.writeText(site.email);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1600);
-    } catch {
-      setCopied(false);
-    }
+function FooterNavItem({ item }: { item: FooterDestination }) {
+  if (!item.href) {
+    return (
+      <span id={item.id} data-ui={item.id} className="block text-body font-medium text-white/92">
+        {item.label}
+      </span>
+    );
   }
 
   return (
-    <button
-      id="FooterEmail"
-      data-ui="FooterEmail"
-      type="button"
-      onClick={onCopy}
-      className="text-left text-body text-ink transition-colors duration-300 hover:text-muted"
-      aria-label="Button for copy email"
-    >
-      <span>{site.email}</span>
-      <span
-        id="FooterEmailCopiedState"
-        data-ui="FooterEmailCopiedState"
-        className={`ml-2 text-label text-faint transition-opacity duration-300 ${
-          copied ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        Copied!
-      </span>
-    </button>
-  );
-}
-
-function FooterContact() {
-  return (
-    <div id="FooterContact" data-ui="FooterContact">
-      <p className="mb-4 text-label text-faint">Contact</p>
-      <div className="flex flex-col gap-2.5">
-        <CopyEmailButton />
-        <a
-          id="FooterScheduleCall"
-          data-ui="FooterScheduleCall"
-          href={site.scheduleUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="text-body text-ink transition-colors duration-300 hover:text-muted"
-        >
-          Schedule a call
-        </a>
-      </div>
-    </div>
-  );
-}
-
-function FooterSocial() {
-  return (
-    <div id="FooterSocial" data-ui="FooterSocial" className="flex items-center gap-3">
-      {site.social.map((item) => (
-        <a
-          key={item.id}
-          id={item.id}
-          data-ui={item.id}
-          href={item.href}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={item.label}
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-ink transition-colors duration-300 hover:bg-neutral-50"
-        >
-          {item.label === "LinkedIn" ? <LinkedInIcon /> : <InstagramIcon />}
-        </a>
-      ))}
-    </div>
-  );
-}
-
-function LinkedInIcon() {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.8v2.1h.05c.53-1 1.84-2.1 3.79-2.1 4.05 0 4.8 2.67 4.8 6.14V24h-4v-7.7c0-1.84-.03-4.2-2.56-4.2-2.56 0-2.95 2-2.95 4.06V24h-4V8.5z" />
-    </svg>
-  );
-}
-
-function InstagramIcon() {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden>
-      <rect x="3" y="3" width="18" height="18" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
-    </svg>
+    <Link id={item.id} data-ui={item.id} href={item.href} className={itemClass}>
+      {item.label}
+    </Link>
   );
 }
 
 export function SiteFooter() {
   return (
-    <footer
-      id="SiteFooter"
-      data-ui="SiteFooter"
-      className="mx-auto mt-[var(--section-gap)] w-full max-w-page border-t border-line/70 px-[var(--page-pad)] pb-12 pt-12 md:pb-16 md:pt-16"
+    <section
+      id="FooterShell"
+      data-ui="FooterShell"
+      className="bg-black px-3 pb-3 pt-3 md:px-6 md:pb-6 md:pt-6"
     >
-      <div className="grid grid-cols-1 gap-10 phone:gap-12 md:grid-cols-12 md:gap-8">
-        <div className="md:col-span-5">
-          <FooterBrand />
+      <footer
+        id="FooterContact"
+        data-ui="FooterContact"
+        aria-label="Portfolio footer"
+        className="relative isolate flex min-h-[640px] flex-col overflow-hidden rounded-[18px] bg-[#27328A] font-project text-white md:min-h-[clamp(760px,55vw,960px)] md:rounded-[24px]"
+      >
+        <div
+          className="relative z-[2] grid gap-x-10 gap-y-12 px-6 pb-16 pt-16 md:grid-cols-2 md:px-10 md:pt-20 xl:grid-cols-[2.4fr_1.45fr_0.9fr_0.9fr_1.15fr] xl:gap-x-14 xl:px-[clamp(72px,7vw,140px)] xl:pt-[clamp(88px,7vw,128px)]"
+        >
+          <p className="max-w-[540px] font-handwritten text-[length:var(--type-footer-statement)] font-normal leading-[1.17] tracking-[-0.02em] text-white md:col-span-2 xl:col-span-1">
+            {footerStatement}
+          </p>
+
+          <div>
+            <FooterHeading>CONTACT</FooterHeading>
+            <div className="flex flex-col gap-3">
+              <a
+                id="FooterEmail"
+                data-ui="FooterEmail"
+                href={`mailto:${site.email}`}
+                className={`${itemClass} font-semibold [overflow-wrap:anywhere]`}
+              >
+                {site.email}
+              </a>
+              <a
+                id="FooterScheduleCall"
+                data-ui="FooterScheduleCall"
+                href={site.scheduleUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${itemClass} inline-flex items-center gap-1.5`}
+              >
+                Schedule a call
+                <ExportSquare size={16} color="currentColor" variant="Linear" aria-hidden />
+              </a>
+            </div>
+          </div>
+
+          <nav aria-label="Footer navigation">
+            <FooterHeading>NAVIGATION</FooterHeading>
+            <ul className="flex flex-col gap-3">
+              {footerNavigation.map((item) => (
+                <li key={item.id}>
+                  <FooterNavItem item={item} />
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav aria-label="Social links">
+            <FooterHeading>SOCIAL</FooterHeading>
+            <ul className="flex flex-col gap-3">
+              {footerSocialLinks.map((item) => (
+                <li key={item.id}>
+                  {item.href ? (
+                    <a
+                      id={`FooterSocial-${item.id}`}
+                      data-ui={`FooterSocial-${item.id}`}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={itemClass}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <span className="block text-body font-medium text-white/92">
+                      {item.label}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div>
+            <FooterHeading>LOCATION</FooterHeading>
+            <p className="text-body font-medium text-white/92">
+              {footerLocation.place}
+              <span className="block">{footerLocation.note}</span>
+            </p>
+          </div>
         </div>
-        <div className="md:col-span-3">
-          <FooterLinks />
+
+        <div className="mt-auto">
+          <FooterImageTicker />
         </div>
-        <div className="flex flex-col justify-between gap-8 md:col-span-4 md:items-start">
-          <FooterContact />
-          <FooterSocial />
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </section>
   );
 }

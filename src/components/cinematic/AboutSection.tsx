@@ -22,16 +22,16 @@ export function AboutSection({
     <section
       id="AboutSection"
       data-ui="AboutSection"
-      className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white px-6 py-12 font-hero text-black md:px-10"
+      className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white px-6 py-12 font-project text-black md:px-10"
     >
       <GridBackdrop />
       <CompanyLogoRail overlayProgress={overlayProgress} />
       <div className="relative z-10 mx-auto flex w-full max-w-[1300px] flex-col items-center">
         <div className="flex w-full max-w-[1000px] flex-col items-center text-center">
-          <p className="w-full text-[26px] leading-[1.45]">
+          <p className="w-full text-[26px] font-semibold leading-[1.45]">
             {about.intro}
           </p>
-          <p className="mt-8 w-full text-[26px] leading-[1.45]">
+          <p className="mt-8 w-full text-[26px] font-semibold leading-[1.45]">
             Previously, she designed at{" "}
             {about.companies.map((company, index) => (
               <span key={company.label}>
