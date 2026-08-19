@@ -10,6 +10,11 @@
   --media-radius: clamp(14px, 1.4vw, 20px);
   --max-page: 1440px;
 
+  /* Grid backdrop. The layer that draws these is held at 60% opacity, so the
+     line lands near rgba(17,17,17,0.07) on screen. */
+  --grid-square: 50px;
+  --grid-line: rgba(17, 17, 17, 0.12);
+
   /* Type scale — system style guide */
   --type-h1: 30px;
   --type-h2: 26px;

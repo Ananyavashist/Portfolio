@@ -9,6 +9,7 @@ import { AboutSection } from "@/components/cinematic/AboutSection";
 import { LiveHero } from "@/components/cinematic/LiveHero";
 import { ScrollStack } from "@/components/cinematic/ScrollStack";
 import { ProjectSection } from "@/components/home/ProjectSection";
+import { TestimonialSection } from "@/components/home/TestimonialSection";
 
 export function CinematicExperience() {
   const reducedMotion = useReducedMotion();
@@ -32,15 +33,19 @@ export function CinematicExperience() {
 
   useEffect(() => {
     const root = document.documentElement;
-    if (introCleared) {
-      root.classList.remove("scroll-locked");
-      // Nudge scroll-progress observers to re-measure now that the document scrolls again.
-      window.dispatchEvent(new Event("resize"));
-      return;
+    // Scrolling is released the instant the video is over. Waiting for the
+    // overlay's fade to finish would swallow the first gesture after it ends.
+    if (!videoEnded) {
+      root.classList.add("scroll-locked");
+      return () => root.classList.remove("scroll-locked");
     }
-    root.classList.add("scroll-locked");
-    return () => root.classList.remove("scroll-locked");
-  }, [introCleared]);
+    root.classList.remove("scroll-locked");
+    // Nudge scroll-progress observers to re-measure now that the document scrolls again.
+    const frame = window.requestAnimationFrame(() => {
+      window.dispatchEvent(new Event("resize"));
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [videoEnded]);
 
   useEffect(() => {
     const images = [
@@ -71,6 +76,7 @@ export function CinematicExperience() {
           </div>
           <AboutSection />
           <ProjectSection />
+          <TestimonialSection />
         </>
       ) : (
         <ScrollStack />
@@ -80,7 +86,9 @@ export function CinematicExperience() {
         <motion.div
           id="IntroOverlay"
           data-ui="IntroOverlay"
-          className="fixed inset-0 z-[100] bg-[#000000]"
+          className={`fixed inset-0 z-[100] bg-[#000000] ${
+            videoEnded ? "pointer-events-none" : ""
+          }`}
           initial={{ opacity: 1 }}
           animate={{ opacity: videoEnded ? 0 : 1 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
