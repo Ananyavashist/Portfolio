@@ -24,7 +24,7 @@ const config: Config = {
         display: ["var(--font-inter-display)", "sans-serif"],
         sans: ["var(--font-inter)", "sans-serif"],
         handwritten: ["var(--font-pangolin)", "cursive"],
-        hero: ["var(--font-balsamiq)", "var(--font-pangolin)", "cursive"],
+        hero: ["var(--font-pangolin)", "cursive"],
         project: ["var(--font-plus-jakarta)", "sans-serif"],
       },
       fontSize: {

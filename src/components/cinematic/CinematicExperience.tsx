@@ -10,11 +10,21 @@ import { LiveHero } from "@/components/cinematic/LiveHero";
 import { ScrollStack } from "@/components/cinematic/ScrollStack";
 import { ProjectSection } from "@/components/home/ProjectSection";
 import { TestimonialSection } from "@/components/home/TestimonialSection";
+import { SiteFooter } from "@/components/site/SiteFooter";
 
 export function CinematicExperience() {
-  const reducedMotion = useReducedMotion();
+  const prefersReducedMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
   const [videoEnded, setVideoEnded] = useState(false);
   const [introCleared, setIntroCleared] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  // The static export cannot know a visitor's motion preference, and
+  // useReducedMotion reads the media query during render. Deferring the branch
+  // until after mount keeps the server and the first client render in agreement;
+  // the swap lands behind the opaque intro overlay.
+  const reducedMotion = mounted && prefersReducedMotion;
 
   const finishVideo = useCallback(() => setVideoEnded(true), []);
 
@@ -77,6 +87,7 @@ export function CinematicExperience() {
           <AboutSection />
           <ProjectSection />
           <TestimonialSection />
+          <SiteFooter />
         </>
       ) : (
         <ScrollStack />

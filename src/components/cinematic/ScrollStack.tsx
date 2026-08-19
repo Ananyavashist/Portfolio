@@ -16,6 +16,7 @@ import {
 } from "@/components/cinematic/StackCard";
 import { ProjectSection } from "@/components/home/ProjectSection";
 import { TestimonialSection } from "@/components/home/TestimonialSection";
+import { SiteFooter } from "@/components/site/SiteFooter";
 
 // Sticky-stack geometry. A `sticky top-0` card of CARD_SVH inside a track of
 // height T stays pinned for (T - CARD_SVH) of scroll. Pulling every card after
@@ -37,10 +38,12 @@ import { TestimonialSection } from "@/components/home/TestimonialSection";
 //   290svh onward  the projects grid scrolls normally
 //   grid end       projects pins on its last screen (see the tail below)
 //   + 100svh       testimonials rise, projects recedes behind them
+//   + 100svh       footer rises, testimonials recede behind it
 const CARD_SVH = 100;
 const HERO_TRACK_SVH = 390;
 const HERO_REVEAL_SVH = 90;
 const ABOUT_TRACK_SVH = 200;
+const TESTIMONIALS_TRACK_SVH = 200;
 
 // `offset: ["start start", "end end"]` spreads 0 → 1 across the distance the
 // track scrolls past a pinned card, which is the track height minus one card —
@@ -60,6 +63,7 @@ export function ScrollStack() {
   const projectsRef = useRef<HTMLDivElement>(null);
   const projectsPinRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
   const stageName = useRef("reveal");
   const [heroComplete, setHeroComplete] = useState(false);
   const [metricsActive, setMetricsActive] = useState(false);
@@ -110,6 +114,11 @@ export function ScrollStack() {
 
   const { scrollYProgress: testimonialsRise } = useScroll({
     target: testimonialsRef,
+    offset: ["start end", "start start"],
+  });
+
+  const { scrollYProgress: footerRise } = useScroll({
+    target: footerRef,
     offset: ["start end", "start start"],
   });
 
@@ -216,16 +225,36 @@ export function ScrollStack() {
 
       <div
         ref={testimonialsRef}
-        id="TestimonialsCard"
-        data-ui="TestimonialsCard"
-        className="relative z-40 min-h-[100svh] overflow-hidden bg-[#f7f7f7]"
+        id="TestimonialsTrack"
+        data-ui="TestimonialsTrack"
+        className="relative z-40"
+        style={{
+          height: `${TESTIMONIALS_TRACK_SVH}svh`,
+          marginTop: `-${CARD_SVH}svh`,
+        }}
+      >
+        <StackCard
+          id="TestimonialsCard"
+          coverProgress={footerRise}
+          className="bg-[#f7f7f7]"
+          radius={CARD_RADIUS}
+        >
+          <TestimonialSection />
+        </StackCard>
+      </div>
+
+      <div
+        ref={footerRef}
+        id="FooterCard"
+        data-ui="FooterCard"
+        className="relative z-50 overflow-hidden bg-black"
         style={{
           marginTop: `-${CARD_SVH}svh`,
           borderTopLeftRadius: CARD_RADIUS,
           borderTopRightRadius: CARD_RADIUS,
         }}
       >
-        <TestimonialSection />
+        <SiteFooter />
       </div>
     </div>
   );

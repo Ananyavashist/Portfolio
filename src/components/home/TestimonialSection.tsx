@@ -30,13 +30,13 @@ export function TestimonialSection() {
     <section
       id="TestimonialSection"
       data-ui="TestimonialSection"
-      className="relative min-h-[100svh] bg-[#f7f7f7] font-project text-black"
+      className="relative flex h-full min-h-[100svh] flex-col overflow-hidden bg-[#f7f7f7] font-project text-black"
     >
       <GridBackdrop />
-      <div className="relative mx-auto w-full max-w-[1400px] px-5 pb-24 pt-20 sm:px-8 md:pb-32 md:pt-24 lg:px-10 lg:pb-36">
+      <div className="relative mx-auto flex h-full w-full max-w-[1400px] flex-col justify-center px-5 py-10 sm:px-8 lg:px-10">
         <header className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between md:gap-10">
           <div className="max-w-[620px]">
-            <h2 className="font-hero text-[30px] font-medium leading-[1.1] text-black md:text-[36px] lg:text-[40px]">
+            <h2 className="font-handwritten text-[30px] font-normal leading-[1.1] text-black md:text-[36px] lg:text-[40px]">
               What it’s like to build with me
             </h2>
             <p className="mt-4 text-[16px] leading-[1.5] text-black md:text-[18px] md:leading-[1.45]">

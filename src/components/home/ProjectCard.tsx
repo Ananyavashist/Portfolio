@@ -91,14 +91,12 @@ export function ProjectCard({ project }: { project: Project }) {
       id={project.id}
       data-ui={project.id}
       layout
-      initial={
-        reducedMotion ? false : { opacity: 0, y: 8, scale: 0.985 }
-      }
+      initial={{ opacity: 0, y: 8, scale: 0.985 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={
         reducedMotion ? { opacity: 0 } : { opacity: 0, y: 6, scale: 0.985 }
       }
-      transition={cardTransition}
+      transition={reducedMotion ? { duration: 0 } : cardTransition}
       className="group/media min-w-0"
     >
       <Link

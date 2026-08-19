@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Balsamiq_Sans, Inter, Pangolin, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Pangolin, Plus_Jakarta_Sans } from "next/font/google";
 import { SiteCursor } from "@/components/core/SiteCursor";
 import "./globals.css";
 
@@ -30,13 +30,6 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700"],
 });
 
-const balsamiqSans = Balsamiq_Sans({
-  subsets: ["latin"],
-  variable: "--font-balsamiq",
-  display: "swap",
-  weight: ["400", "700"],
-});
-
 export const metadata: Metadata = {
   title: "Ananya — Product Designer",
   description:
@@ -51,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${interDisplay.variable} ${pangolin.variable} ${balsamiqSans.variable} ${plusJakarta.variable} antialiased`}
+        className={`${inter.variable} ${interDisplay.variable} ${pangolin.variable} ${plusJakarta.variable} antialiased`}
       >
         {children}
         <SiteCursor />
