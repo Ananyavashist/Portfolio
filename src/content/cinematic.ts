@@ -22,15 +22,43 @@ export const cinematic = {
     right: "a Product Designer.",
   },
   hero: {
-    name: "Ananya",
-    year: "@2026",
-    role: "Product Designer",
-    location: "United States",
-    craft: "AI Builder",
-    craftNote: "Experimentation in progress",
-    design: "Design",
-    contentCreator: "Content Creator",
-    instagramUrl: "https://www.instagram.com/ananyadesign/",
+    corners: {
+      topLeft: "Ananya @2026",
+      topRight: ["Design Engineer", "Speaker and Hosting", "Design Community"],
+      bottomLeft: "Product Designer @UITS",
+      bottomRight: "Claude 2026 Hackathon Winner",
+    },
+    words: {
+      crafting: "Crafting",
+      solutions: "solutions",
+      b2b2c: "B2B2C",
+      for: "for",
+      enterprise: "Enterprise",
+      startups: "Startups",
+      mncs: "MNCs",
+    },
+    carousel: [
+      {
+        id: "slide-aude",
+        src: "/intro/cards/aude-performance.png",
+        alt: "Aude performance product work",
+      },
+      {
+        id: "slide-makemytrip",
+        src: "/intro/cards/makemytrip.png",
+        alt: "MakeMyTrip booking confirmation work",
+      },
+      {
+        id: "slide-accolade",
+        src: "/intro/cards/deal-meridian-dashboard.png",
+        alt: "Accolade broker dashboard work",
+      },
+      {
+        id: "slide-gradient",
+        src: "/intro/cards/centry-os.png",
+        alt: "GradientFI merchant statement work",
+      },
+    ],
   },
   about: {
     intro:

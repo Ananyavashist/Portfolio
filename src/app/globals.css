@@ -25,6 +25,18 @@
     overscroll-behavior-y: none;
   }
 
+  html[data-hero-lock],
+  html[data-hero-lock] body {
+    width: 1689px;
+    height: 931px;
+    overflow: hidden;
+    background: #121212;
+  }
+
+  html[data-hero-lock] nextjs-portal {
+    display: none !important;
+  }
+
   /* Once the hero fills the viewport the overscroll gutter must not flash black.
      The hero is now full-bleed navy, so the gutter matches the canvas. */
   html[data-stage="hero"],

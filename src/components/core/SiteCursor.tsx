@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   AnimatePresence,
   motion,
@@ -47,6 +48,7 @@ function resolveVariant(
 }
 
 export function SiteCursor() {
+  const pathname = usePathname();
   const reducedMotion = useReducedMotion();
 
   const rawX = useMotionValue(0);
@@ -129,12 +131,14 @@ export function SiteCursor() {
   const scale =
     visible && variant === "interactive" && !reducedMotion ? 1.35 : 1;
 
+  if (pathname.startsWith("/hero-lock")) return null;
+
   return (
     <motion.div
       id="SiteCursor"
       data-ui="SiteCursor"
       aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-[200] hidden [@media(hover:hover)_and_(pointer:fine)]:block"
+      className="pointer-events-none fixed left-0 top-0 z-[10001] hidden [@media(hover:hover)_and_(pointer:fine)]:block"
       style={{ x, y, transformOrigin: "0px 0px" }}
       animate={{ opacity: visible ? 1 : 0, scale }}
       transition={{ duration: reducedMotion ? 0 : 0.18, ease: "easeOut" }}
