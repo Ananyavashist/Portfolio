@@ -1,0 +1,254 @@
+.stage {
+  position: relative;
+  width: 1689px;
+  height: 931px;
+  overflow: hidden;
+  background: #121212;
+  font-family: var(--font-inter), Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  color: #080808;
+}
+
+.artboard {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  width: 1666px;
+  height: 895px;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    #d3d3d3 0%,
+    #cecece 50%,
+    #c7c7c7 100%
+  );
+}
+
+.grain {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+.watermark {
+  position: absolute;
+  left: 18px;
+  top: 348px;
+  z-index: 2;
+  margin: 0;
+  font-size: 278px;
+  font-weight: 700;
+  letter-spacing: -0.09em;
+  line-height: 0.85;
+  color: rgba(0, 0, 0, 0.018);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.word {
+  position: absolute;
+  z-index: 3;
+  margin: 0;
+  font-weight: 700;
+  color: #080808;
+  letter-spacing: -0.05em;
+  line-height: 0.86;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.crafting {
+  left: 510px;
+  top: 132px;
+  font-size: 108px;
+}
+
+.solution {
+  left: 683px;
+  top: 225px;
+  font-size: 103px;
+}
+
+.b2b2c {
+  left: 371px;
+  top: 336px;
+  font-size: 94px;
+}
+
+.for {
+  left: 554px;
+  top: 504px;
+  font-size: 94px;
+}
+
+.enterprise {
+  left: 1005px;
+  top: 518px;
+  font-size: 89px;
+}
+
+.startups {
+  left: 847px;
+  top: 636px;
+  font-size: 91px;
+}
+
+.mncs {
+  left: 855px;
+  top: 742px;
+  font-size: 91px;
+}
+
+.card {
+  position: absolute;
+  left: 681px;
+  top: 306px;
+  z-index: 4;
+  box-sizing: border-box;
+  width: 324px;
+  height: 323px;
+  padding: 22px 23px 20px;
+  background: linear-gradient(135deg, #fc3e33 0%, #fd4336 55%, #fd4638 100%);
+}
+
+.cardHeader {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #080808;
+}
+
+.cardPrimary {
+  margin: 26px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #080808;
+}
+
+.cardSecondary {
+  margin: 22px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #080808;
+}
+
+.details {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  margin: 46px 0 0;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+  color: #080808;
+  text-decoration: none;
+}
+
+.detailsWord {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.detailsArrow {
+  text-decoration: none;
+}
+
+.action {
+  position: absolute;
+  left: 972px;
+  top: 372px;
+  z-index: 5;
+  display: grid;
+  width: 66px;
+  height: 66px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.actionRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #d8d8d8;
+  box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.actionCore {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 51px;
+  height: 51px;
+  place-items: center;
+  border-radius: 50%;
+  background: #080808;
+}
+
+.build {
+  position: absolute;
+  left: 1051px;
+  top: 396px;
+  z-index: 6;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  color: #080808;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+.star {
+  position: absolute;
+  left: 57px;
+  top: 69px;
+  z-index: 6;
+}
+
+.identity {
+  position: absolute;
+  left: 56px;
+  top: 96px;
+  z-index: 6;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #080808;
+}
+
+.support {
+  position: absolute;
+  top: 68px;
+  right: 65px;
+  z-index: 6;
+  width: 90px;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #858585;
+  text-align: right;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  width: 1689px;
+  height: 931px;
+  object-fit: fill;
+  pointer-events: none;
+  mix-blend-mode: difference;
+}

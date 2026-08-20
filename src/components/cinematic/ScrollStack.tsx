@@ -17,6 +17,7 @@ import {
 import { ProjectSection } from "@/components/home/ProjectSection";
 import { TestimonialSection } from "@/components/home/TestimonialSection";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { setDockVisible } from "@/content/dockNavigation";
 
 // Sticky-stack geometry. A `sticky top-0` card of CARD_SVH inside a track of
 // height T stays pinned for (T - CARD_SVH) of scroll. Pulling every card after
@@ -134,7 +135,9 @@ export function ScrollStack() {
   const projectsDim = useTransform(testimonialsRise, [0, 1], [0, COVERED_DIM]);
 
   useMotionValueEvent(heroReveal, "change", (value) => {
-    setHeroComplete(value >= 0.995);
+    const complete = value >= 0.995;
+    setHeroComplete(complete);
+    setDockVisible(complete);
     const next = value > 0.9 ? "hero" : "reveal";
     if (next !== stageName.current) {
       stageName.current = next;
@@ -247,7 +250,7 @@ export function ScrollStack() {
         ref={footerRef}
         id="FooterCard"
         data-ui="FooterCard"
-        className="relative z-50 overflow-hidden bg-black"
+        className="relative z-50 h-[100svh] overflow-hidden bg-black"
         style={{
           marginTop: `-${CARD_SVH}svh`,
           borderTopLeftRadius: CARD_RADIUS,

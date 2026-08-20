@@ -57,6 +57,7 @@ function LogoMark({
       id={logo.id}
       data-ui={logo.id}
       className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center justify-center will-change-transform"
+      initial={false}
       style={{
         left: `${logo.x}%`,
         top: `${logo.y}%`,

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Pangolin, Plus_Jakarta_Sans } from "next/font/google";
+import { AppleDockNav } from "@/components/site/AppleDockNav";
 import { SiteCursor } from "@/components/core/SiteCursor";
 import "./globals.css";
 
@@ -47,6 +48,7 @@ export default function RootLayout({
         className={`${inter.variable} ${interDisplay.variable} ${pangolin.variable} ${plusJakarta.variable} antialiased`}
       >
         {children}
+        <AppleDockNav />
         <SiteCursor />
       </body>
     </html>

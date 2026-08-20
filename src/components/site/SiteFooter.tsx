@@ -41,16 +41,16 @@ export function SiteFooter() {
     <section
       id="FooterShell"
       data-ui="FooterShell"
-      className="bg-black px-3 pb-3 pt-3 md:px-6 md:pb-6 md:pt-6"
+      className="flex h-full min-h-[100svh] flex-col bg-black px-3 pb-3 pt-3 md:px-6 md:pb-6 md:pt-6"
     >
       <footer
         id="FooterContact"
         data-ui="FooterContact"
         aria-label="Portfolio footer"
-        className="relative isolate flex min-h-[640px] flex-col overflow-hidden rounded-[18px] bg-[#27328A] font-project text-white md:min-h-[clamp(760px,55vw,960px)] md:rounded-[24px]"
+        className="relative isolate flex min-h-0 flex-1 flex-col overflow-hidden rounded-[18px] bg-[#27328A] font-project text-white md:rounded-[24px]"
       >
         <div
-          className="relative z-[2] grid gap-x-10 gap-y-12 px-6 pb-16 pt-16 md:grid-cols-2 md:px-10 md:pt-20 xl:grid-cols-[2.4fr_1.45fr_0.9fr_0.9fr_1.15fr] xl:gap-x-14 xl:px-[clamp(72px,7vw,140px)] xl:pt-[clamp(88px,7vw,128px)]"
+          className="relative z-[2] grid min-h-0 flex-1 gap-x-10 gap-y-8 overflow-y-auto px-6 pb-10 pt-10 md:grid-cols-2 md:gap-y-12 md:px-10 md:pb-16 md:pt-20 xl:grid-cols-[2.4fr_1.45fr_0.9fr_0.9fr_1.15fr] xl:gap-x-14 xl:px-[clamp(72px,7vw,140px)] xl:pt-[clamp(88px,7vw,128px)]"
         >
           <p className="max-w-[540px] font-handwritten text-[length:var(--type-footer-statement)] font-normal leading-[1.17] tracking-[-0.02em] text-white md:col-span-2 xl:col-span-1">
             {footerStatement}
@@ -127,7 +127,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-auto">
+        <div className="mt-auto shrink-0">
           <FooterImageTicker />
         </div>
       </footer>

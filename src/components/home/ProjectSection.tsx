@@ -32,7 +32,7 @@ export function ProjectSection() {
     <section
       id="ProjectSection"
       data-ui="ProjectSection"
-      className="relative bg-white font-project text-black"
+      className="relative bg-white pb-[var(--portfolio-dock-clearance)] font-project text-black"
     >
       <div className="relative mx-auto w-full max-w-[1400px] px-5 pb-24 pt-20 sm:px-8 md:pb-32 md:pt-24 lg:px-10 lg:pb-36">
         <header className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between md:gap-10">

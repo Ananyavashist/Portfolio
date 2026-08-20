@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type RefObject } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import { motion } from "motion/react";
 import type { HeroCard } from "@/content/cinematic";
 import { asset } from "@/lib/asset";
@@ -28,6 +28,9 @@ export function HeroCardLayer({
   // Releasing a drag still fires a click on the card, which would otherwise
   // read as a tap and toggle it.
   const dragged = useRef(false);
+  const [dragReady, setDragReady] = useState(false);
+
+  useEffect(() => setDragReady(true), []);
 
   return (
     <motion.button
@@ -36,7 +39,8 @@ export function HeroCardLayer({
       data-ui="HeroCardLayer"
       aria-label={card.alt}
       tabIndex={interactive ? 0 : -1}
-      drag={draggable}
+      initial={false}
+      drag={dragReady && draggable}
       dragConstraints={constraintsRef}
       // Constrained to the canvas with no rubber band, so a card can never be
       // thrown past the edge, and it stays exactly where it is dropped.
