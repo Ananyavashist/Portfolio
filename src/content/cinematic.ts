@@ -44,16 +44,34 @@ export const cinematic = {
     },
     carousel: [
       {
-        id: "slide-trip-onboarding",
-        src: "/intro/cards/hero-trip-onboarding.png",
-        alt: "Ride onboarding screen explaining how to plan a trip",
-        slug: "confirmation-flow",
+        id: "slide-centry-os",
+        src: "/intro/cards/hero-centry-os.png",
+        alt: "Centry OS merchant statement with liquidity overview and payment metrics",
+      },
+      {
+        id: "slide-irctc-id",
+        src: "/intro/cards/hero-irctc-id.png",
+        alt: "Create IRCTC ID account details form",
+      },
+      {
+        id: "slide-deal-meridian",
+        src: "/intro/cards/hero-deal-meridian.png",
+        alt: "Deal Meridian broker dashboard with leads and property charts",
+      },
+      {
+        id: "slide-trip-how-it-works",
+        src: "/intro/cards/hero-trip-how-it-works.png",
+        alt: "Trip planner how-it-works onboarding screen",
       },
       {
         id: "slide-booking-success",
         src: "/intro/cards/hero-booking-success.png",
         alt: "Train booking successful confirmation ticket",
-        slug: "confirmation-flow",
+      },
+      {
+        id: "slide-coaching-session",
+        src: "/intro/cards/hero-coaching-session.png",
+        alt: "Request a coaching session modal",
       },
     ],
   },

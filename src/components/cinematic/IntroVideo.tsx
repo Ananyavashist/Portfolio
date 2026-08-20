@@ -51,7 +51,7 @@ export function IntroVideo({ onFinish }: { onFinish: () => void }) {
       <motion.p
         id="IntroCaption"
         data-ui="IntroCaption"
-        className="pointer-events-none absolute inset-x-0 bottom-[82%] whitespace-nowrap text-center text-[36px] leading-none text-white"
+        className="pointer-events-none absolute inset-x-0 bottom-[min(82%,calc(100%-5rem))] px-[var(--page-pad)] text-center text-h1 font-medium leading-tight text-white"
         initial={{ opacity: 0 }}
         animate={{ opacity: captionVisible ? 1 : 0 }}
         transition={{ duration: 0.3, ease: "easeOut" }}

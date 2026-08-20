@@ -256,6 +256,7 @@ export function AppleDockNav() {
   const mouseX = useMotionValue(Number.POSITIVE_INFINITY);
   const [mounted, setMounted] = useState(false);
   const [coarse, setCoarse] = useState(false);
+  const [narrow, setNarrow] = useState(false);
   const [section, setSection] = useState<DockItemId | null>(null);
   const [tooltipId, setTooltipId] = useState<DockItemId | null>(null);
   const reducedMotion = mounted && !!prefersReducedMotion;
@@ -313,6 +314,14 @@ export function AppleDockNav() {
   useEffect(() => {
     const media = window.matchMedia(COARSE_POINTER);
     const update = () => setCoarse(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 360px)");
+    const update = () => setNarrow(media.matches);
     update();
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
@@ -397,12 +406,17 @@ export function AppleDockNav() {
   }, [pathname]);
 
   const restSize = coarse
-    ? DOCK_SETTINGS.mobileIconSize
+    ? narrow
+      ? 36
+      : DOCK_SETTINGS.mobileIconSize
     : DOCK_SETTINGS.desktopBaseIconSize;
   const maxSize = coarse
-    ? DOCK_SETTINGS.mobileIconSize
+    ? restSize
     : DOCK_SETTINGS.desktopMaximumIconSize;
   const magnify = !coarse && !reducedMotion;
+  const itemGap = coarse && narrow ? 4 : DOCK_SETTINGS.itemGap;
+  const horizontalPadding =
+    coarse && narrow ? 6 : DOCK_SETTINGS.horizontalPadding;
 
   const trayHeight = restSize + DOCK_SETTINGS.verticalPadding * 2;
   const rowHeight = maxSize + DOCK_SETTINGS.verticalPadding + 8;
@@ -462,9 +476,9 @@ export function AppleDockNav() {
           className="relative flex items-end"
           style={{
             height: rowHeight,
-            gap: DOCK_SETTINGS.itemGap,
-            paddingLeft: DOCK_SETTINGS.horizontalPadding,
-            paddingRight: DOCK_SETTINGS.horizontalPadding,
+            gap: itemGap,
+            paddingLeft: horizontalPadding,
+            paddingRight: horizontalPadding,
             paddingBottom: DOCK_SETTINGS.verticalPadding,
           }}
         >

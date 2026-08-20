@@ -59,17 +59,17 @@ export function MetricsRow({
   return (
     <dl
       ref={ref}
-      className="mt-[60px] flex w-full flex-row flex-nowrap items-start justify-center gap-x-[120px]"
+      className="mt-[clamp(1.5rem,5vw,3.75rem)] flex w-full flex-row flex-wrap items-start justify-center gap-x-[clamp(1.25rem,8vw,7.5rem)] gap-y-5"
     >
       {stats.map((stat) => (
         <div
           key={stat.label}
           className="flex flex-col items-center justify-end text-center"
         >
-          <dt className="text-[clamp(1.75rem,3.5vw,2.25rem)] font-bold leading-none">
+          <dt className="text-h1 font-bold leading-none">
             <AnimatedMetric value={stat.value} active={playing} />
           </dt>
-          <dd className="mt-2 text-[clamp(0.875rem,1.5vw,1rem)] font-bold leading-snug">
+          <dd className="mt-2 max-w-[8rem] text-label font-bold leading-snug">
             {stat.label}
           </dd>
         </div>

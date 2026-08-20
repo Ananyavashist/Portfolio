@@ -17,7 +17,6 @@ import {
   waitForDockTarget,
 } from "@/lib/dockScroll";
 import { IntroVideo } from "@/components/cinematic/IntroVideo";
-import { AboutSection } from "@/components/cinematic/AboutSection";
 import { LiveHero } from "@/components/cinematic/LiveHero";
 import { ScrollStack } from "@/components/cinematic/ScrollStack";
 import { ProjectSection } from "@/components/home/ProjectSection";
@@ -156,8 +155,9 @@ export function CinematicExperience() {
           <div id="StaticHero" data-ui="StaticHero" className="h-[100svh] w-full">
             <LiveHero interactive={introCleared} />
           </div>
-          <AboutSection />
-          <ProjectSection />
+          <div id="ProjectsCard" data-ui="ProjectsCard">
+            <ProjectSection />
+          </div>
           <TestimonialSection />
           <SiteFooter />
         </>

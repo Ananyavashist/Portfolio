@@ -121,14 +121,6 @@ a {
   padding-top: 70px;
 }
 
-@media (min-width: 768px) {
-  :root {
-    --footer-ticker-card-width: 300px;
-    --footer-ticker-height-tall: 400px;
-    --footer-ticker-height-medium: 360px;
-    --footer-ticker-height-short: 320px;
-  }
-}
 
 .footer-ticker-offset {
   margin-left: clamp(-140px, -8vw, -64px);

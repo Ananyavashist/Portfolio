@@ -89,9 +89,10 @@ export function HeroStage({
       <div
         id="CinematicText"
         data-ui="CinematicText"
-        className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center whitespace-nowrap text-[36px] leading-none text-white"
+        className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center whitespace-nowrap leading-none text-white"
         style={
           {
+            fontSize: "clamp(1.125rem, 2.4vw + 0.7rem, var(--type-h1))",
             "--gap":
               "calc(0.14em + max(var(--gapT), min(var(--k) / 0.078, 1)) * clamp(24px, 2.5vw, 48px) + var(--k) * clamp(12px, 1.2vw, 32px))",
           } as React.CSSProperties

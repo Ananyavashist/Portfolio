@@ -15,6 +15,13 @@ export function ProjectMediaFrame() {
   const prefersReducedMotion = useReducedMotion();
   const [size, setSize] = useState({ width: 324, height: 323 });
   const [index, setIndex] = useState(0);
+  const [skipTransition, setSkipTransition] = useState(false);
+
+  const loopSlides =
+    !prefersReducedMotion && slides.length > 1
+      ? [...slides, slides[0]]
+      : slides;
+  const cloneIndex = slides.length;
 
   useLayoutEffect(() => {
     const frame = frameRef.current;
@@ -39,19 +46,25 @@ export function ProjectMediaFrame() {
 
   useEffect(() => {
     if (prefersReducedMotion || slides.length < 2) return;
-    let timeout = window.setTimeout(function advance() {
-      setIndex((current) => (current + 1) % slides.length);
-      timeout = window.setTimeout(advance, HOLD_MS + TRANSITION_S * 1000);
+    if (index === cloneIndex) return;
+    const timeout = window.setTimeout(() => {
+      setIndex((current) => current + 1);
     }, HOLD_MS);
     return () => window.clearTimeout(timeout);
-  }, [prefersReducedMotion]);
+  }, [cloneIndex, index, prefersReducedMotion]);
+
+  useLayoutEffect(() => {
+    if (!skipTransition) return;
+    const frame = requestAnimationFrame(() => setSkipTransition(false));
+    return () => cancelAnimationFrame(frame);
+  }, [skipTransition]);
 
   return (
     <div
       ref={frameRef}
       id="ProjectMediaFrame"
       data-ui="ProjectMediaFrame"
-      data-active-index={index}
+      data-active-index={index % slides.length}
       className={styles.frame}
       role="region"
       aria-label="Selected project work"
@@ -63,22 +76,27 @@ export function ProjectMediaFrame() {
         className={styles.track}
         animate={{ x: -index * size.width }}
         transition={
-          prefersReducedMotion
+          prefersReducedMotion || skipTransition
             ? { duration: 0 }
             : { duration: TRANSITION_S, ease: [0.22, 1, 0.36, 1] }
         }
         style={{ willChange: prefersReducedMotion ? "auto" : "transform" }}
+        onAnimationComplete={() => {
+          if (index !== cloneIndex) return;
+          setSkipTransition(true);
+          setIndex(0);
+        }}
       >
-        {slides.map((slide, slideIndex) => (
+        {loopSlides.map((slide, slideIndex) => (
           <figure
-            key={slide.id}
+            key={`${slide.id}-${slideIndex}`}
             className={styles.slide}
             style={{ width: size.width, height: size.height }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={asset(slide.src)}
-              alt={slide.alt}
+              alt={slideIndex === cloneIndex ? "" : slide.alt}
               width={648}
               height={646}
               decoding={slideIndex === 0 ? "sync" : "async"}

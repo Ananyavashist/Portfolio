@@ -17,7 +17,7 @@ const ENTER_END = 0.65;
 // Every logo shares one footprint so the two rails read as a single set. The
 // `y` percentages in the content file put the top row level with the first
 // line of the about copy.
-const LOGO_SIZE = 70;
+const LOGO_SIZE = "clamp(40px, 5.2vw, 70px)";
 const LOGO_RADIUS = 6;
 
 function clampProgress(value: number, start: number, end: number) {
