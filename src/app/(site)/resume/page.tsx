@@ -5,7 +5,7 @@ export default function ResumePage() {
     <main
       id="ResumePlaceholder"
       data-ui="ResumePlaceholder"
-      className="mx-auto w-full max-w-page px-[var(--page-pad)] py-16 md:py-24"
+      className="mx-auto w-full max-w-page px-[var(--page-pad)] py-[clamp(3.5rem,8vw,6rem)]"
     >
       <p className="text-label text-faint">Resume</p>
       <h1 className="mt-3 font-display text-h1 font-semibold text-ink">

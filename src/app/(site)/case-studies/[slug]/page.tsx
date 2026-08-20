@@ -21,7 +21,7 @@ export default async function CaseStudyPlaceholder({
     <main
       id="CaseStudyPlaceholder"
       data-ui="CaseStudyPlaceholder"
-      className="mx-auto w-full max-w-page px-[var(--page-pad)] py-16 md:py-24"
+      className="mx-auto w-full max-w-page px-[var(--page-pad)] py-[clamp(3.5rem,8vw,6rem)]"
     >
       <p className="text-label text-faint">{project.company}</p>
       <h1 className="mt-3 max-w-3xl font-display text-h1 font-semibold text-ink">

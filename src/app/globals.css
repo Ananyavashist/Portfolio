@@ -4,16 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Pangolin is the only hero/handwritten face. A stale --font-balsamiq on
-   .font-hero made the whole font-family invalid, so headings inherited
-   Plus Jakarta. Weight 400 is the only loaded Pangolin cut. */
+/* Headings that used Pangolin now use Inter 600. Plus Jakarta stays on
+   .font-project and is not overridden here. */
 .font-hero,
 .font-handwritten {
-  font-family: var(--font-pangolin), cursive;
+  font-family: var(--font-inter-display), var(--font-inter), Inter, sans-serif;
 }
 
 .font-hero {
-  font-weight: 400;
+  font-weight: 600;
 }
 
 @layer base {
@@ -122,14 +121,6 @@ a {
   padding-top: 70px;
 }
 
-@media (min-width: 768px) {
-  :root {
-    --footer-ticker-card-width: 300px;
-    --footer-ticker-height-tall: 400px;
-    --footer-ticker-height-medium: 360px;
-    --footer-ticker-height-short: 320px;
-  }
-}
 
 .footer-ticker-offset {
   margin-left: clamp(-140px, -8vw, -64px);

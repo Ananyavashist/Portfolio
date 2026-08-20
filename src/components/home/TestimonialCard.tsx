@@ -50,7 +50,7 @@ export function TestimonialCard({
       <motion.figure
         id={testimonial.id}
         data-ui="TestimonialCard"
-        className="relative m-0 flex w-full flex-col rounded-media p-6 shadow-[0_18px_40px_rgba(0,0,0,0.10)] lg:p-7"
+        className="relative m-0 flex w-full flex-col rounded-media p-[clamp(1rem,2.2vw,1.75rem)] shadow-[0_18px_40px_rgba(0,0,0,0.10)]"
         style={{ backgroundColor: testimonial.color }}
         animate={{
           rotate: active ? 0 : tilt,
@@ -65,7 +65,7 @@ export function TestimonialCard({
       >
         <span
           aria-hidden
-          className="block font-project text-[34px] font-bold leading-none text-black/30"
+          className="block font-project text-h1 font-bold leading-none text-black/30"
         >
           &ldquo;
         </span>
@@ -76,7 +76,7 @@ export function TestimonialCard({
 
         {/* Pushed to the bottom edge so all four name blocks line up even
             though the quotes differ in length. */}
-        <figcaption className="mt-auto pt-8">
+        <figcaption className="mt-auto pt-[clamp(1rem,3vw,2rem)]">
           <span className="block text-label font-semibold leading-[1.3] text-black">
             {testimonial.name}
           </span>

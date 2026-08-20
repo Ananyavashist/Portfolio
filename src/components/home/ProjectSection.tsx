@@ -34,17 +34,16 @@ export function ProjectSection() {
       data-ui="ProjectSection"
       className="relative bg-white pb-[var(--portfolio-dock-clearance)] font-project text-black"
     >
-      <div className="relative mx-auto w-full max-w-[1400px] px-5 pb-24 pt-20 sm:px-8 md:pb-32 md:pt-24 lg:px-10 lg:pb-36">
-        <header className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between md:gap-10">
-          <div className="max-w-[560px]">
-            <h2 className="font-handwritten text-[30px] font-normal leading-[1.1] text-black md:text-[36px] lg:text-[40px]">
-              Shipped, Learned, Iterated
-            </h2>
-            <p className="mt-4 text-[16px] leading-[1.5] text-black md:text-[18px] md:leading-[1.45]">
+      <div className="relative mx-auto w-full max-w-[1650px] px-[clamp(1.25rem,4vw,2.5rem)] pb-[clamp(4rem,10vw,9rem)] pt-[clamp(3.5rem,8vw,6rem)]">
+        <header className="flex flex-col gap-8 [container-type:inline-size]">
+          <h2 className="whitespace-nowrap font-handwritten font-semibold leading-[1.1] tracking-[-0.045em] text-black [font-size:min(var(--type-section-display),calc(100cqi/18))] [font-weight:600]">
+            Shipped, Learned, Iterated
+          </h2>
+          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between md:gap-10">
+            <p className="max-w-[560px] text-body leading-[1.5] text-black">
               Projects that challenged how I approach products, systems, people,
               and technology.
             </p>
-          </div>
 
           {showFilters ? (
             <div
@@ -62,7 +61,7 @@ export function ProjectSection() {
                     type="button"
                     aria-pressed={isActive}
                     onClick={() => setActiveFilter(filter.id)}
-                    className={`h-[42px] rounded-pill px-[22px] text-[15px] font-medium leading-none transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 md:text-[16px] ${
+                    className={`h-[42px] rounded-pill px-[22px] text-body font-medium leading-none transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 ${
                       isActive
                         ? "border border-transparent bg-[#2F368F] text-white"
                         : "border border-[#dfdfdf] bg-white text-black"
@@ -74,6 +73,7 @@ export function ProjectSection() {
               })}
             </div>
           ) : null}
+          </div>
         </header>
 
         <div className="mt-10 md:mt-14 lg:mt-16">

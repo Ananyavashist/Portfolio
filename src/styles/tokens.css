@@ -15,22 +15,23 @@
   --grid-square: 50px;
   --grid-line: rgba(17, 17, 17, 0.12);
 
-  --type-footer-statement: clamp(2rem, 2.6vw, 3.4rem);
+  --type-footer-statement: clamp(1.5rem, 1.1rem + 2vw, 3.4rem);
 
-  --footer-ticker-card-width: 300px;
-  --footer-ticker-height-tall: 200px;
-  --footer-ticker-height-medium: 180px;
-  --footer-ticker-height-short: 160px;
-  --portfolio-dock-clearance: 124px;
+  --footer-ticker-card-width: clamp(140px, 22vw, 300px);
+  --footer-ticker-height-tall: clamp(140px, 28vw, 400px);
+  --footer-ticker-height-medium: clamp(120px, 24vw, 360px);
+  --footer-ticker-height-short: clamp(100px, 20vw, 320px);
+  --portfolio-dock-clearance: clamp(88px, 14vw, 124px);
 
-  /* Type scale — system style guide */
-  --type-h1: 30px;
-  --type-h2: 26px;
-  --type-h3: 24px;
-  --type-h4: 20px;
-  --type-h5: 18px;
-  --type-body: 16px;
-  --type-label: 14px;
+  /* Type scale — system style guide. Max values are the desktop sizes;
+     they shrink fluidly on smaller viewports instead of jumping. */
+  --type-h1: clamp(22px, 1.15rem + 0.7vw, 30px);
+  --type-h2: clamp(20px, 1.05rem + 0.55vw, 26px);
+  --type-h3: clamp(18px, 0.95rem + 0.5vw, 24px);
+  --type-h4: clamp(17px, 0.9rem + 0.35vw, 20px);
+  --type-h5: clamp(16px, 0.85rem + 0.3vw, 18px);
+  --type-body: clamp(14px, 0.8rem + 0.25vw, 16px);
+  --type-section-display: 80px;
 
   /* Cinematic hero palette */
   --cinematic-black: #000000;

@@ -1,0 +1,30 @@
+.frame {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #fd4135;
+  contain: paint;
+}
+
+.track {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+}
+
+.slide {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  margin: 0;
+  overflow: hidden;
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}

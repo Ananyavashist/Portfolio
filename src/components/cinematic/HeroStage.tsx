@@ -31,6 +31,7 @@ export function HeroStage({
     SHELL_CURVE_K,
   );
   const k = useTransform(shellCurve, [0, 1], [START_K, 1]);
+  const insetPercent = useTransform(k, (value) => (1 - value) * 50);
 
   const pillOpacity = useTransform(revealProgress, [0, 0.05], [1, 0]);
   const pillY = useTransform(revealProgress, [0, 0.09], [0, -160]);
@@ -42,7 +43,7 @@ export function HeroStage({
     [0.1, 0.65, 0.9, 1],
     [6, 16, 18, 0],
   );
-  const shellRadius = useMotionTemplate`${radiusPx}px`;
+  const shellClipPath = useMotionTemplate`inset(${insetPercent}% ${insetPercent}% ${insetPercent}% ${insetPercent}% round ${radiusPx}px)`;
 
   const sentenceOpacity = useTransform(revealProgress, [0.68, 0.92], [1, 0]);
 
@@ -88,9 +89,10 @@ export function HeroStage({
       <div
         id="CinematicText"
         data-ui="CinematicText"
-        className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center whitespace-nowrap text-[36px] leading-none text-white"
+        className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center whitespace-nowrap leading-none text-white"
         style={
           {
+            fontSize: "clamp(1.125rem, 2.4vw + 0.7rem, var(--type-h1))",
             "--gap":
               "calc(0.14em + max(var(--gapT), min(var(--k) / 0.078, 1)) * clamp(24px, 2.5vw, 48px) + var(--k) * clamp(12px, 1.2vw, 32px))",
           } as React.CSSProperties
@@ -120,28 +122,19 @@ export function HeroStage({
         </motion.span>
       </div>
 
-      <div
-        id="CinematicCenterAnchor"
-        data-ui="CinematicCenterAnchor"
-        className="absolute inset-0 z-30 grid place-items-center"
+      <motion.div
+        ref={shellRef}
+        id="HeroShell"
+        data-ui="HeroShell"
+        className="absolute inset-0 z-30 overflow-hidden"
+        style={{
+          clipPath: shellClipPath,
+          willChange: "clip-path",
+          contain: "paint",
+        }}
       >
-        <motion.div
-          ref={shellRef}
-          id="HeroShell"
-          data-ui="HeroShell"
-          className="relative overflow-hidden"
-          style={{
-            width: "calc(100% * var(--k))",
-            height: "calc(100% * var(--k))",
-            borderRadius: shellRadius,
-            transformOrigin: "center center",
-          }}
-        >
-          <div className="absolute inset-0">
-            <LiveHero interactive={interactive} />
-          </div>
-        </motion.div>
-      </div>
+        <LiveHero interactive={interactive} />
+      </motion.div>
     </motion.div>
   );
 }

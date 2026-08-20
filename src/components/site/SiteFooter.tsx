@@ -52,7 +52,7 @@ export function SiteFooter() {
         <div
           className="relative z-[2] grid min-h-0 flex-1 gap-x-10 gap-y-8 overflow-y-auto px-6 pb-10 pt-10 md:grid-cols-2 md:gap-y-12 md:px-10 md:pb-16 md:pt-20 xl:grid-cols-[2.4fr_1.45fr_0.9fr_0.9fr_1.15fr] xl:gap-x-14 xl:px-[clamp(72px,7vw,140px)] xl:pt-[clamp(88px,7vw,128px)]"
         >
-          <p className="max-w-[540px] font-handwritten text-[length:var(--type-footer-statement)] font-normal leading-[1.17] tracking-[-0.02em] text-white md:col-span-2 xl:col-span-1">
+          <p className="max-w-[540px] font-handwritten text-[length:var(--type-footer-statement)] font-semibold leading-[1.17] tracking-[-0.02em] text-white md:col-span-2 xl:col-span-1">
             {footerStatement}
           </p>
 

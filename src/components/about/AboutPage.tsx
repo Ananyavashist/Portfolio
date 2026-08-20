@@ -205,7 +205,7 @@ function AboutValues() {
             key={value.id}
             id={value.id}
             data-ui={value.id}
-            className="min-w-[220px] shrink-0 rounded-[20px] bg-[#F7F7F7] p-6 lg:min-w-0 lg:shrink"
+            className="min-w-[min(220px,80vw)] shrink-0 rounded-[20px] bg-[#F7F7F7] p-6 lg:min-w-0 lg:shrink"
           >
             <h3 className="font-display text-h3 font-semibold text-[#000000]">
               {value.title}
@@ -303,7 +303,7 @@ export function AboutPage() {
     <main
       id="AboutPage"
       data-ui="AboutPage"
-      className="mx-auto w-full max-w-page px-[var(--page-pad)] pb-16 pt-[70px] md:pb-24"
+      className="mx-auto w-full max-w-page px-[var(--page-pad)] pb-[clamp(3rem,8vw,6rem)] pt-[clamp(3.5rem,8vw,4.5rem)]"
     >
       <AboutIntro />
       <AboutInterests />

@@ -24,7 +24,12 @@ export const cinematic = {
   hero: {
     corners: {
       topLeft: "Ananya @2026",
-      topRight: ["Design Engineer", "Speaker and Hosting", "Design Community"],
+      topRight: [
+        "Design engineer",
+        "AI builder",
+        "Design content creator",
+        "Claude 2026 hackathon runner up",
+      ],
       bottomLeft: "Product Designer @UITS",
       bottomRight: "Claude 2026 Hackathon Winner",
     },
@@ -39,24 +44,34 @@ export const cinematic = {
     },
     carousel: [
       {
-        id: "slide-aude",
-        src: "/intro/cards/aude-performance.png",
-        alt: "Aude performance product work",
+        id: "slide-centry-os",
+        src: "/intro/cards/hero-centry-os.png",
+        alt: "Centry OS merchant statement with liquidity overview and payment metrics",
       },
       {
-        id: "slide-makemytrip",
-        src: "/intro/cards/makemytrip.png",
-        alt: "MakeMyTrip booking confirmation work",
+        id: "slide-irctc-id",
+        src: "/intro/cards/hero-irctc-id.png",
+        alt: "Create IRCTC ID account details form",
       },
       {
-        id: "slide-accolade",
-        src: "/intro/cards/deal-meridian-dashboard.png",
-        alt: "Accolade broker dashboard work",
+        id: "slide-deal-meridian",
+        src: "/intro/cards/hero-deal-meridian.png",
+        alt: "Deal Meridian broker dashboard with leads and property charts",
       },
       {
-        id: "slide-gradient",
-        src: "/intro/cards/centry-os.png",
-        alt: "GradientFI merchant statement work",
+        id: "slide-trip-how-it-works",
+        src: "/intro/cards/hero-trip-how-it-works.png",
+        alt: "Trip planner how-it-works onboarding screen",
+      },
+      {
+        id: "slide-booking-success",
+        src: "/intro/cards/hero-booking-success.png",
+        alt: "Train booking successful confirmation ticket",
+      },
+      {
+        id: "slide-coaching-session",
+        src: "/intro/cards/hero-coaching-session.png",
+        alt: "Request a coaching session modal",
       },
     ],
   },

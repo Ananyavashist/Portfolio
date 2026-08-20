@@ -6,6 +6,7 @@ const config: Config = {
     screens: {
       xs: "320px",
       phone: "390px",
+      sm: "640px",
       md: "768px",
       lg: "1024px",
       xl: "1280px",
@@ -23,8 +24,8 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-inter-display)", "sans-serif"],
         sans: ["var(--font-inter)", "sans-serif"],
-        handwritten: ["var(--font-pangolin)", "cursive"],
-        hero: ["var(--font-pangolin)", "cursive"],
+        handwritten: ["var(--font-inter-display)", "sans-serif"],
+        hero: ["var(--font-inter-display)", "sans-serif"],
         project: ["var(--font-plus-jakarta)", "sans-serif"],
       },
       fontSize: {
