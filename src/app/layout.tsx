@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Pangolin, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { AppleDockNav } from "@/components/site/AppleDockNav";
 import { SiteCursor } from "@/components/core/SiteCursor";
 import "./globals.css";
@@ -15,13 +15,6 @@ const interDisplay = Inter({
   variable: "--font-inter-display",
   display: "swap",
   weight: ["500", "600", "700"],
-});
-
-const pangolin = Pangolin({
-  subsets: ["latin"],
-  variable: "--font-pangolin",
-  display: "swap",
-  weight: "400",
 });
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -45,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${interDisplay.variable} ${pangolin.variable} ${plusJakarta.variable} antialiased`}
+        className={`${inter.variable} ${interDisplay.variable} ${plusJakarta.variable} antialiased`}
       >
         {children}
         <AppleDockNav />

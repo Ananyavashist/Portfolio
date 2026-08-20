@@ -36,7 +36,7 @@ export function TestimonialSection() {
       <div className="relative mx-auto flex h-full w-full max-w-[1400px] flex-col justify-center px-5 py-10 sm:px-8 lg:px-10">
         <header className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between md:gap-10">
           <div className="max-w-[620px]">
-            <h2 className="font-handwritten text-[30px] font-normal leading-[1.1] text-black md:text-[36px] lg:text-[40px]">
+            <h2 className="font-handwritten text-[30px] font-semibold leading-[1.1] text-black md:text-[36px] lg:text-[40px]">
               What it’s like to build with me
             </h2>
             <p className="mt-4 text-[16px] leading-[1.5] text-black md:text-[18px] md:leading-[1.45]">

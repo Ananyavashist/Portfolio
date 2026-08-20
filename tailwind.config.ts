@@ -23,8 +23,8 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-inter-display)", "sans-serif"],
         sans: ["var(--font-inter)", "sans-serif"],
-        handwritten: ["var(--font-pangolin)", "cursive"],
-        hero: ["var(--font-pangolin)", "cursive"],
+        handwritten: ["var(--font-inter-display)", "sans-serif"],
+        hero: ["var(--font-inter-display)", "sans-serif"],
         project: ["var(--font-plus-jakarta)", "sans-serif"],
       },
       fontSize: {

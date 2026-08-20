@@ -24,7 +24,12 @@ export const cinematic = {
   hero: {
     corners: {
       topLeft: "Ananya @2026",
-      topRight: ["Design Engineer", "Speaker and Hosting", "Design Community"],
+      topRight: [
+        "Design engineer",
+        "AI builder",
+        "Design content creator",
+        "Claude 2026 hackathon runner up",
+      ],
       bottomLeft: "Product Designer @UITS",
       bottomRight: "Claude 2026 Hackathon Winner",
     },
@@ -39,24 +44,16 @@ export const cinematic = {
     },
     carousel: [
       {
-        id: "slide-aude",
-        src: "/intro/cards/aude-performance.png",
-        alt: "Aude performance product work",
+        id: "slide-trip-onboarding",
+        src: "/intro/cards/hero-trip-onboarding.png",
+        alt: "Ride onboarding screen explaining how to plan a trip",
+        slug: "confirmation-flow",
       },
       {
-        id: "slide-makemytrip",
-        src: "/intro/cards/makemytrip.png",
-        alt: "MakeMyTrip booking confirmation work",
-      },
-      {
-        id: "slide-accolade",
-        src: "/intro/cards/deal-meridian-dashboard.png",
-        alt: "Accolade broker dashboard work",
-      },
-      {
-        id: "slide-gradient",
-        src: "/intro/cards/centry-os.png",
-        alt: "GradientFI merchant statement work",
+        id: "slide-booking-success",
+        src: "/intro/cards/hero-booking-success.png",
+        alt: "Train booking successful confirmation ticket",
+        slug: "confirmation-flow",
       },
     ],
   },

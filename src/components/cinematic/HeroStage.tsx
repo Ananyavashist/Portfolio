@@ -31,6 +31,7 @@ export function HeroStage({
     SHELL_CURVE_K,
   );
   const k = useTransform(shellCurve, [0, 1], [START_K, 1]);
+  const insetPercent = useTransform(k, (value) => (1 - value) * 50);
 
   const pillOpacity = useTransform(revealProgress, [0, 0.05], [1, 0]);
   const pillY = useTransform(revealProgress, [0, 0.09], [0, -160]);
@@ -42,7 +43,7 @@ export function HeroStage({
     [0.1, 0.65, 0.9, 1],
     [6, 16, 18, 0],
   );
-  const shellRadius = useMotionTemplate`${radiusPx}px`;
+  const shellClipPath = useMotionTemplate`inset(${insetPercent}% ${insetPercent}% ${insetPercent}% ${insetPercent}% round ${radiusPx}px)`;
 
   const sentenceOpacity = useTransform(revealProgress, [0.68, 0.92], [1, 0]);
 
@@ -120,28 +121,19 @@ export function HeroStage({
         </motion.span>
       </div>
 
-      <div
-        id="CinematicCenterAnchor"
-        data-ui="CinematicCenterAnchor"
-        className="absolute inset-0 z-30 grid place-items-center"
+      <motion.div
+        ref={shellRef}
+        id="HeroShell"
+        data-ui="HeroShell"
+        className="absolute inset-0 z-30 overflow-hidden"
+        style={{
+          clipPath: shellClipPath,
+          willChange: "clip-path",
+          contain: "paint",
+        }}
       >
-        <motion.div
-          ref={shellRef}
-          id="HeroShell"
-          data-ui="HeroShell"
-          className="relative overflow-hidden"
-          style={{
-            width: "calc(100% * var(--k))",
-            height: "calc(100% * var(--k))",
-            borderRadius: shellRadius,
-            transformOrigin: "center center",
-          }}
-        >
-          <div className="absolute inset-0">
-            <LiveHero interactive={interactive} />
-          </div>
-        </motion.div>
-      </div>
+        <LiveHero interactive={interactive} />
+      </motion.div>
     </motion.div>
   );
 }

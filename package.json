@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "hero:diff": "node scripts/hero-pixelmatch.mjs"
+    "hero:diff": "node scripts/hero-pixelmatch.mjs",
+    "hero:reveal": "node scripts/hero-reveal-test.mjs"
   },
   "dependencies": {
     "iconsax-reactjs": "^0.0.8",

@@ -2,31 +2,25 @@
 
 import { HeroArtboard } from "@/components/cinematic/HeroArtboard";
 
-const STAGE_W = 1689;
-const STAGE_H = 931;
+const CANVAS = "#fafafa";
 
-export function LiveHero({ interactive: _interactive }: { interactive: boolean }) {
+export function LiveHero({ interactive }: { interactive: boolean }) {
   return (
     <section
       id="LiveHero"
       data-ui="LiveHero"
-      className="h-full w-full overflow-hidden bg-[#121212]"
+      className="h-full w-full overflow-hidden"
+      style={{ background: CANVAS }}
     >
       <div
         id="HeroCanvas"
         data-ui="HeroCanvas"
-        className="grid h-full w-full place-items-center overflow-hidden bg-[#121212]"
-        style={{ containerType: "size" }}
+        data-hero-stage-scale={1}
+        className="relative h-full w-full overflow-hidden"
+        style={{ background: CANVAS }}
       >
-        <div
-          style={{
-            width: STAGE_W,
-            height: STAGE_H,
-            transformOrigin: "center center",
-            scale: "min(calc(100cqi / 1689px), calc(100cqh / 931px))",
-          }}
-        >
-          <HeroArtboard />
+        <div className="absolute inset-0">
+          <HeroArtboard interactive={interactive} />
         </div>
       </div>
     </section>

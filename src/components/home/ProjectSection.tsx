@@ -37,7 +37,7 @@ export function ProjectSection() {
       <div className="relative mx-auto w-full max-w-[1400px] px-5 pb-24 pt-20 sm:px-8 md:pb-32 md:pt-24 lg:px-10 lg:pb-36">
         <header className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between md:gap-10">
           <div className="max-w-[560px]">
-            <h2 className="font-handwritten text-[30px] font-normal leading-[1.1] text-black md:text-[36px] lg:text-[40px]">
+            <h2 className="font-handwritten text-[30px] font-semibold leading-[1.1] text-black md:text-[36px] lg:text-[40px]">
               Shipped, Learned, Iterated
             </h2>
             <p className="mt-4 text-[16px] leading-[1.5] text-black md:text-[18px] md:leading-[1.45]">

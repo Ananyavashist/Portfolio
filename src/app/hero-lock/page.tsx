@@ -23,7 +23,7 @@ function HeroLockInner() {
         width: 1689,
         height: 931,
         overflow: "hidden",
-        background: "#121212",
+        background: "#fafafa",
       }}
     >
       <HeroArtboard overlay={overlay} />

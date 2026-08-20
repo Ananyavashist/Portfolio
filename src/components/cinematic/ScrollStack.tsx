@@ -33,7 +33,7 @@ import { setDockVisible } from "@/content/dockNavigation";
 // The whole sequence has to be gapless: something visible must move at every
 // scroll position, so each stage starts exactly where the previous one ends.
 //
-//   0    → 90svh   hero collage reveals
+//   0    → 90svh   hero clip-path reveals
 //   90   → 190svh  about rises, hero recedes behind it
 //   190  → 290svh  projects rises, about recedes behind it
 //   290svh onward  the projects grid scrolls normally
