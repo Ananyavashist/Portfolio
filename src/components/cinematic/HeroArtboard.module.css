@@ -1,7 +1,7 @@
 .stage {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 1689px;
+  height: 931px;
   overflow: hidden;
   pointer-events: none;
   background: #fafafa;
@@ -9,7 +9,6 @@
   -webkit-font-smoothing: antialiased;
   text-rendering: geometricPrecision;
   color: #080808;
-  container-type: size;
 }
 
 .interactive {
@@ -45,56 +44,56 @@
 }
 
 .crafting {
-  left: 30.2%;
-  top: 14.18%;
-  font-size: 11.6cqh;
+  left: 510px;
+  top: 132px;
+  font-size: 108px;
 }
 
 .solution {
-  left: 40.44%;
-  top: 24.17%;
-  font-size: 11.06cqh;
+  left: 683px;
+  top: 225px;
+  font-size: 103px;
 }
 
 .b2b2c {
-  left: calc(40.32% - 12px);
-  top: 54.14%;
-  font-size: 10.1cqh;
+  left: 669px;
+  top: 504px;
+  font-size: 94px;
   transform: translateX(-100%);
 }
 
 .for {
-  left: calc(40.32% - 12px);
-  top: 36.09%;
-  font-size: 10.1cqh;
+  left: 669px;
+  top: 336px;
+  font-size: 94px;
   transform: translateX(-100%);
 }
 
 .enterprise {
-  left: 59.5%;
-  top: 55.64%;
-  font-size: 9.56cqh;
+  left: 1005px;
+  top: 518px;
+  font-size: 89px;
 }
 
 .startups {
-  left: 50.15%;
-  top: 68.31%;
-  font-size: 9.77cqh;
+  left: 847px;
+  top: 636px;
+  font-size: 91px;
 }
 
 .mncs {
-  left: 50.62%;
-  top: 79.7%;
-  font-size: 9.77cqh;
+  left: 855px;
+  top: 742px;
+  font-size: 91px;
 }
 
 .mediaGroup {
   position: absolute;
-  left: 40.32%;
-  top: 32.87%;
+  left: 681px;
+  top: 306px;
   z-index: 4;
-  width: clamp(160px, 24.3vw, 350px);
-  height: 34.69%;
+  width: 350px;
+  height: 323px;
   overflow: visible;
 }
 
@@ -104,8 +103,8 @@
   top: 20.4%;
   z-index: 5;
   display: grid;
-  width: clamp(48px, 4.6vw, 66px);
-  height: clamp(48px, 4.6vw, 66px);
+  width: 66px;
+  height: 66px;
   place-items: center;
   padding: 0;
   border: 0;
@@ -146,8 +145,8 @@
   position: relative;
   z-index: 1;
   display: grid;
-  width: 77%;
-  height: 77%;
+  width: 51px;
+  height: 51px;
   place-items: center;
   border-radius: 50%;
   background: #080808;
@@ -159,9 +158,9 @@
   top: 27.9%;
   z-index: 6;
   margin: 0;
-  font-size: var(--type-label);
+  font-size: 14px;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 18px;
   color: #080808;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -183,11 +182,11 @@
 
 .identity {
   position: absolute;
-  left: 3.32%;
-  top: 7.3%;
+  left: 56px;
+  top: 68px;
   z-index: 6;
   margin: 0;
-  font-size: var(--type-label);
+  font-size: 13px;
   font-weight: 700;
   line-height: 1.2;
   color: #080808;
@@ -195,14 +194,14 @@
 
 .support {
   position: absolute;
-  top: 7.3%;
-  right: 3.32%;
+  top: 68px;
+  right: 56px;
   z-index: 6;
-  width: min(28vw, 240px);
+  width: 240px;
   margin: 0;
-  font-size: var(--type-label);
+  font-size: 13px;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 18px;
   color: #858585;
   text-align: right;
 }
@@ -211,90 +210,9 @@
   position: absolute;
   inset: 0;
   z-index: 20;
-  width: 100%;
-  height: 100%;
+  width: 1689px;
+  height: 931px;
   object-fit: fill;
   pointer-events: none;
   mix-blend-mode: difference;
-}
-
-@media (max-width: 767px) {
-  .identity {
-    left: 5%;
-    top: 4.2%;
-  }
-
-  .support {
-    top: 4.2%;
-    right: 5%;
-    width: min(52vw, 240px);
-    line-height: 1.35;
-  }
-
-  .crafting {
-    left: 8%;
-    top: 10%;
-    font-size: clamp(28px, 8.6vw, 52px);
-  }
-
-  .solution {
-    left: 24%;
-    top: 16%;
-    font-size: clamp(26px, 8vw, 48px);
-  }
-
-  .b2b2c {
-    left: calc(50% - min(45vw, 175px) - 12px);
-    top: 64%;
-    font-size: clamp(22px, 7vw, 40px);
-    transform: translateX(-100%);
-  }
-
-  .for {
-    left: calc(50% - min(45vw, 175px) - 12px);
-    top: 24%;
-    font-size: clamp(22px, 7vw, 40px);
-    transform: translateX(-100%);
-  }
-
-  .enterprise {
-    left: 28%;
-    top: 70%;
-    font-size: clamp(20px, 6.6vw, 38px);
-  }
-
-  .startups {
-    left: 34%;
-    top: 77%;
-    font-size: clamp(20px, 6.6vw, 38px);
-  }
-
-  .mncs {
-    left: 36%;
-    top: 84%;
-    font-size: clamp(20px, 6.6vw, 38px);
-  }
-
-  .mediaGroup {
-    left: 50%;
-    top: 44%;
-    width: min(72vw, 280px);
-    height: min(72vw, 280px);
-    transform: translate(-50%, -42%);
-  }
-
-  .action {
-    left: auto;
-    right: -10px;
-    top: 18%;
-    width: clamp(44px, 12vw, 56px);
-    height: clamp(44px, 12vw, 56px);
-  }
-
-  .build {
-    left: auto;
-    right: 0;
-    top: auto;
-    bottom: -1.6em;
-  }
 }
